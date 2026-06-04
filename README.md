@@ -1,12 +1,11 @@
 
 # UART, DMA controller and Memory, all interconnected using APB
 An RTL design project using verilog. It aims to model an SoC subsystem mainly including UART, DMA controller and memory interfaced with APB. 
-
+*The documentation and directories are not complete. They are updated as the project developes.*
 ## Table of Contents
 
 - [Overview](#overview)
 - [System Architecture](#system-architecture)
-- [Features](#features)
 - [Module Descriptions](#module-descriptions)
   - [UART](#uart)
   - [DMA Controller](#dma-controller)
@@ -16,7 +15,6 @@ An RTL design project using verilog. It aims to model an SoC subsystem mainly in
 - [Verification](#verification)
 - [Simulation Results](#simulation-results)
 - [LinkedIn Series](#linkedin-series)
-- [Future Improvements](#future-improvements)
 
 
 
