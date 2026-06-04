@@ -44,7 +44,7 @@ The system consist of a UART module, dual channel DMA controller, memory module 
     - **TX CHANNEL** : It handles data transfer from memory buffer allocated for transmission to TX of UART.
     - **RX CHANNEL** : It handles data transfer from RX of UART to memory buffer allocated to store the recieved data.
 
-- **Memory** : Represents the main memory of the external system. The buffers for TX and RX are allocated within this memory.
+- **MEMORY** : Represents the main memory of the external system. The buffers for TX and RX are allocated within this memory.
 
 ### Registers
 #### Control registers
