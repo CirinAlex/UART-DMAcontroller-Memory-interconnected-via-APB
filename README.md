@@ -23,7 +23,7 @@ NB : *The documentation and directories are not complete. They are updated as th
 
 
 ## Overview
-<img width="2952" height="2798" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" />
+<img width="1968" height="1865" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" />
 
 
 This project is an RTL implementation of an SoC subsystem featuring a UART, DMA Controller, and Memory Module, all interconnected through the AMBA APB (Advanced Peripheral Bus) protocol. The design focuses on scalable modular architecture, clean RTL coding practices, and subsystem-level integration concepts commonly used in digital IC design.
