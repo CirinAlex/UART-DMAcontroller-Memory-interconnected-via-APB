@@ -1,121 +1,120 @@
 
-
+//TX top module
 
 module TXtop(
-	input reg[7:0] timerCurrentVal,
-	input reg[7:0] TXbuff,
-	input reg TE,
-	input wire TI_irq, // pulled low for short time
-	output reg TI,
-	output wire TX,
-	input clk,
-	output reg TXshiftenable,
-	output TXshiftready,
-	output reg TXCH,
-	output reg[1:0] state
+	input reg[7:0] timerCurrentVal, //real-time output of uart-timer
+	input reg[7:0] TXbuff,		//buffer for TX, data to transmit is written to this buffer
+	input reg TE,			//TX enable
+	input wire TI_in, 		//External line that pulls TI low, pulled low for short time
+	output reg TI,			//TX interrupt
+	output wire TX,			//TX pin
+	input clk,			//master clock signal
+	input wire pwrite		//pwrite line from APB interface, used to signal the change in TXbuff
 );
 
-//reg[1:0] state;
+reg[1:0] state; //TX FSM state variable
 
-//reg TXCH;
-//reg TXshiftenable;
-//wire TXshiftready;
+reg TXCH; //internal register that signals change in TXbuff
+reg TXshiftenable; //enable signal, input for TXshift
+wire TXshiftready; //ready signal output from TXshift
 	
-//instantiation
-
-
+//instantiation of TXshift module
 TXshift A1(.timerCurrentVal(timerCurrentVal), .TXbuff(TXbuff), .TXshiftenable(TXshiftenable), .clk(clk), .TXshiftready(TXshiftready), .TX(TX));
 
 
-
-
-
-
-/*always @(TE, posedge TXshiftready) //hidden for testing
+//TXCH made HIGH after when there is a write operation on TXbuff
+always @(negedge pwrite)
 begin
-	state <= 2'b00;
-	if(state != 2'b00)
-	TXCH <= 0;
+if(pwrite==0)
+TXCH <= 1;
+end
 
-  end
-*/
-
+//initialization of some reg
 always @(posedge TE)
 begin
 state <= 2'b00;
-
-end
-
-always @(posedge TXshiftready)
-begin
-
-if(state != 2'b00)
-TXCH <= 0;
+TXshiftenable <= 0;
+TI <= 0;
 end
 
 
-
-
-
-
-always @(negedge TI_irq)
+//keeps the TXshiftenable complementary to TXshiftready of TXshift module
+//
+always @(TXshiftready)
 begin
-	TI <= TI_irq;
-end
-
-always @(TXbuff)
-begin
-
-	TXCH <= 1;
+if(TXshiftready==1)
 	TXshiftenable <= 0;
-
 end
 
 
-always @(TXCH, TE, posedge TXshiftready)
+//TI (output) made LOW externally, done by pulling down TI_in
+always @(negedge TI_in)
+begin
+	TI <= TI_in;
+end
+
+
+
+//TX FSM
+always @(clk)
 begin
 
 case(state)
-	2'b00 : begin
-		if(TE==1)
-			state <= 2'b01;
-	end
 
-	2'b01 : begin  
-		if(TE==0)
-			state <= 2'b00;
-		else if(TE==1)
-			begin
-				if(TXCH==1)
-				begin
-					TXCH <= 0;
-					state <= 2'b10;
-				end
-			end
-	end
+// IDLE state
+2'b00 : begin
+	if(TE==1) //goes to state START when TE enabled
+		state <= 2'b01;
 
-	2'b10 : begin
-		if(TXCH==1)
+end
+
+// START state
+2'b01 : begin
+
+	//goes to state IDLE whenever TE disabled
+	if(TE==0)
+		state <= 2'b00;
+
+	//goes to next state (TRANSMIT) after there is a write operation to TXbuff
+	else if(TXCH==1)
 		begin
 			state <= 2'b10;
-			TXCH <= 0;
-			TXshiftenable <= 0;
-		end
-		if(TE==0)
-			state <= 2'b00;
-		else if(TE==1 && TXshiftenable==0)
-		begin
-			TXshiftenable <= 1;
-		end
-		else if(TE==1 && TXshiftready==1)
-		begin
-			TXshiftenable <= 0;
-			TI <= 1;
+			TXshiftenable <= 0; //disabled TXshift
 		end
 	end
 
+// TRANSMIT state
+2'b10 : begin
+
+	//goes to state IDLE
+	if(TE==0)
+		state <= 2'b00;
+
+	//enables TXshift & pulls down TXCH when TXshift is ready to take data
+	else if(TXshiftenable==0 && TXCH==1)
+		begin
+		TXshiftenable <= 1;
+		TXCH <= 0;
+		end
+
+	//goes to state START if TXshift is already enabled, that state further disables the TXshift and settles to state TRANSMIT, this is done to restart
+	//the transmission with new data even in the middle of an ongoing transmission.
+	else if(TXshiftenable==1 && TXCH==1)
+		state <= 2'b01;
+
+	//normal case when TXshift finish transmission, interrupt generated and goes to START state and wait there for change in TXbuff
+	else if(TXshiftready==1)
+		begin
+		TI <= 1;
+		state <= 2'b01;
+		end
+
+end
 
 endcase
+
 end
+
+
 
 endmodule
