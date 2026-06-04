@@ -102,7 +102,14 @@ This helps the external system to update the memory buffer to continue data tran
 
 ## Module Descriptions
 ### UART
-To be updated
+-UARTtop *(master_clk, timerInitVal[7:0], TXbuff[7:0], TE, TI, TI_in, TX, pwrite, RXbuff[7:0], RE, RI, RI_in, RX)*
+  - RXtop *(RE, RX, RI, RXbuff[7:0], timerCurrentVal[7:0], timerInitVal[7:0], RI_in)*
+    - RXshift *(enableIN, ready, timerCurrentVal[7:0], timerInitVal[7:0], RX, RXbuff[7:0])*
+  - TXtop *(timerCurrentVal[7:0], TXbuff[7:0], TE, TI_in, TI, TX, clk, pwrite)*
+    - TXshift *(timerCurrentVal[7:0], TXbuff[7:0], TXshiftenable, clk, TXshiftready, TX)*
+  - uart_timer *(uart_clk, timerInitVal[7:0], timerCurrentVal[7:0])*
+  - clk_divider *(master_clk, uart_clk, RE, TE)*
+
 ### DMA Controller
 To be updated
 ### Memory
