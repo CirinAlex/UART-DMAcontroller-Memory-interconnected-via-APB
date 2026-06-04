@@ -3,6 +3,7 @@
 
 module TXtop(
 	input reg[7:0] timerCurrentVal, //real-time output of uart-timer
+	input reg[7:0] timerInitVal,
 	input reg[7:0] TXbuff,		//buffer for TX, data to transmit is written to this buffer
 	input reg TE,			//TX enable
 	input wire TI_in, 		//External line that pulls TI low, pulled low for short time
@@ -19,7 +20,7 @@ reg TXshiftenable; //enable signal, input for TXshift
 wire TXshiftready; //ready signal output from TXshift
 	
 //instantiation of TXshift module
-TXshift A1(.timerCurrentVal(timerCurrentVal), .TXbuff(TXbuff), .TXshiftenable(TXshiftenable), .clk(clk), .TXshiftready(TXshiftready), .TX(TX));
+TXshift A1(.timerInitVal(timerInitVal), .timerCurrentVal(timerCurrentVal), .TXbuff(TXbuff), .TXshiftenable(TXshiftenable), .clk(clk), .TXshiftready(TXshiftready), .TX(TX));
 
 
 //TXCH made HIGH after when there is a write operation on TXbuff
@@ -50,7 +51,7 @@ end
 //TI (output) made LOW externally, done by pulling down TI_in
 always @(negedge TI_in)
 begin
-	TI <= TI_in;
+	TI <= 0;
 end
 
 

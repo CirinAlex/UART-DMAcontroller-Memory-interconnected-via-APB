@@ -3,6 +3,7 @@
 
 module TXshift(
 	input reg[7:0] timerCurrentVal, //real-time output of uart-timer
+	input reg[7:0] timerInitVal,
 	input reg[7:0] TXbuff, 		//buffer for TX, data to transmit is written to this buffer
 	input reg TXshiftenable, 	//signals the TX block to start transmitting, when TXshiftenable = 1, block enabled
 	input reg clk, 			//master clock signal
@@ -22,7 +23,7 @@ begin
 	TXbuffshift[0] <= 1'b0;
 
 	TXshiftready <= 1'b0;   // pulling the TXshiftready to 0, indicates that the block is BUSY
-	timeToShift <= timerCurrentVal;
+	timeToShift <= timerCurrentVal != 255? timerCurrentVal + 1: timerInitVal;
 	counter <= 4'd10; 	// initialized with 10, because the total transmission in 10 bits
 	TX <= 1; 		// initializes TX, to erase the UNKNOWN state
 end
