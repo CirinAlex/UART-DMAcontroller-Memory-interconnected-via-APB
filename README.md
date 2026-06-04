@@ -9,6 +9,7 @@ NB : *The documentation and directories are not complete. They are updated as th
 
 ## Table of Contents
 
+
 - [Overview](#overview)
 - [System Architecture](#system-architecture)
 - [Module Descriptions](#module-descriptions)
@@ -175,6 +176,7 @@ UART-DMAcontroller-Memory-pipelined-with-APB/
 To be updated
 
 ## Simulation Results
-To be updated
+### UART
+<img width="1920" height="1080" alt="Screenshot 2026-06-05 022958" src="https://github.com/user-attachments/assets/a0b73915-4dfb-4fd9-8b42-8dc909b9b009" />
 
 ## LinkedIn Series
