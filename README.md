@@ -48,20 +48,20 @@ The system consist of a UART module, dual channel DMA controller, memory module 
 
 ### Registers
 #### Control registers
-    - **TE** : Enables transmission through UART.
-    - **RE** : Enables reception through UART.
-    - **DMA_enable** : Enables DMA controller. The DMA should be enabled only after TE and RE are enabled.
+  - **TE** : Enables transmission through UART.
+  - **RE** : Enables reception through UART.
+  -  **DMA_enable** : Enables DMA controller. The DMA should be enabled only after TE and RE are enabled.
 
 #### Configuration registers
-    - **timerInitVal** : the value in this register determines baud rate. Baud rate = Fosc/(32 x (256-timerInitVal))
-    - **Memory_buff_strt_addr** : Starting address of the buffer allocated for TX or RX.
-    - **Memory_buff_offset** : Size of the buffer allocated for TX or RX.
+  - **timerInitVal** : the value in this register determines baud rate. Baud rate = Fosc/(32 x (256-timerInitVal))
+  - **Memory_buff_strt_addr** : Starting address of the buffer allocated for TX or RX.
+  - **Memory_buff_offset** : Size of the buffer allocated for TX or RX.
 
 #### Control signals *or also internal register*
-    - **TI** : Transmission completed Interrupt signal. Driven by UART TX.
-    - **TI_in** : signal driven by DMA controller to clear TI
-    - **RI** : Reception completed interrupt driven by UART RX.
-    - **RI_in** : signal driven by DMA controller to clear RI.
+  - **TI** : Transmission completed Interrupt signal. Driven by UART TX.
+  - **TI_in** : signal driven by DMA controller to clear TI
+  - **RI** : Reception completed interrupt driven by UART RX.
+  - **RI_in** : signal driven by DMA controller to clear RI.
 
 
 
