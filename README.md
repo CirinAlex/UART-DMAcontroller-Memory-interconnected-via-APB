@@ -41,7 +41,6 @@ The system consist of a UART module, dual channel DMA controller, memory module 
     - **RX** : contains RX FSM and shift register.
 
 - **DMA CONTROLLER** : Direct Memory Access controller handles data transfer between UART and memory.
-    - **TX CHANNEL** : It handles the
     - **TX CHANNEL** : It handles data transfer from memory buffer allocated for transmission to TX of UART.
     - **RX CHANNEL** : It handles data transfer from RX of UART to memory buffer allocated to store the recieved data.
 
