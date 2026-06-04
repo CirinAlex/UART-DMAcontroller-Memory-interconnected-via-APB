@@ -29,7 +29,7 @@ uart dut(.master_clk(master_clk), .timerInitVal(timerInitVal), .TXbuff(TXbuff), 
 
 
 // drives TX
-always @(start)
+always @(start, TI)
 begin
 	pwrite = 1;
 	TE = 1;
@@ -40,6 +40,12 @@ begin
 	#5;
 	TXbuff = 8'b00001101;
 	pwrite = 0;
+	
+	if(TI==1)
+		#5;
+		TXbuff = 8'b01110011;
+		#3;
+		TIin <= 0;
 
 end
 
