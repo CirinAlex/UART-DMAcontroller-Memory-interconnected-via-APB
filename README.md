@@ -52,7 +52,7 @@ The system consist of a UART module, dual channel DMA controller, memory module 
 #### Control registers
   - **TE** : Enables transmission through UART.
   - **RE** : Enables reception through UART.
-  -  **DMA_enable** : Enables DMA controller. The DMA should be enabled only after TE and RE are enabled.
+  - **DMA_enable** : Enables DMA controller. The DMA should be enabled only after TE and RE are enabled.
 
 #### Configuration registers
   - **timerInitVal** : the value in this register determines baud rate. Baud rate = Fosc/(32 x (256-timerInitVal))
@@ -64,6 +64,8 @@ The system consist of a UART module, dual channel DMA controller, memory module 
   - **TI_in** : signal driven by DMA controller to clear TI
   - **RI** : Reception completed interrupt driven by UART RX.
   - **RI_in** : signal driven by DMA controller to clear RI.
+  - **TXI** : Driven by DMA. Signals the external system that all the bytes from allocated memory buffer has been transmitted (transmission complete).
+  - **RXI** : Driven by DMA. Signals the external system that the allocated buffer for reception is full.
 
 ### Design and Dataflow
 The system is designed to operate at a clock frequency of 11.0592MHz. This frequency makes it easy to produce standard baud rates after divisions.\
