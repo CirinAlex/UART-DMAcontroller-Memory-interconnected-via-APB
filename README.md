@@ -7,7 +7,6 @@ This is an RTL design project using verilog. It aims to model an SoC subsystem m
 
 - [Overview](#overview)
 - [System Architecture](#system-architecture)
-- [Project Objectives](#project-objectives)
 - [Features](#features)
 - [Module Descriptions](#module-descriptions)
   - [UART](#uart)
