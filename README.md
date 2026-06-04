@@ -65,6 +65,7 @@ The system consist of a UART module, dual channel DMA controller, memory module 
 ### Design and Dataflow
 The system is designed to operate at a clock frequency of 11.0592MHz. This frequency makes it easy to produce standard baud rates after divisions.\
 The CLK_DIVIDER divides clock frequency by 32 and the divided clock functions as the clock of UART-TIMER. The real-time value of UART-TIMER (timerCurrentVal) is given to the RX and TX shift registers to recieve and transmit data with respect to the baud rate.\
+\
 Baud rate = Fosc/(32 x (256-timerInitVal))\
 \
 The external system follows these steps in order
@@ -80,5 +81,6 @@ The data transfer between DMA controller, UART and memory are carried out via AM
 The DMA controller signals the external system when\
 - RX memory buffer is full (RXI)
 - All bytes in TX memory buffer is finished transmitting. (TXI)
+\
 This helps the external system to update the memory buffer to continue data transfer.
 
