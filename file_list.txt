@@ -1,0 +1,8 @@
++libdir+D:\PROJECTS\VLSI verilog\UART DMA APB\UART\modules+D:\PROJECTS\VLSI verilog\UART DMA APB\UART\modules\RX+D:\PROJECTS\VLSI verilog\UART DMA APB\UART\modules\TX+D:\PROJECTS\VLSI verilog\UART DMA APB\UART\testbenches
+UART.v
+clk_divider.v
+uart_timer.v
+RXtop.v
+RXshift.v
+TXtop.v
+TXshift.v
