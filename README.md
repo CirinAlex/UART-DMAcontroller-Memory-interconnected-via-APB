@@ -1,4 +1,5 @@
 
+
 # UART, DMA controller and Memory, all interconnected using APB
 An RTL design project using verilog. It aims to model an SoC subsystem mainly including UART, DMA controller and memory interfaced with APB.\
 \
@@ -23,7 +24,8 @@ NB : *The documentation and directories are not complete. They are updated as th
 
 
 ## Overview
-<img width="1968" height="1865" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" />
+<img width="1095" height="792" alt="UART DMA block diagram" src="https://github.com/user-attachments/assets/306b294f-bb98-4c94-a931-55bd096fde3a" caption="Basic block diagram" alt="Basic block diagram"/>
+<img width="1968" height="1865" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" caption="Detailed architecture diagram" alt="Detailed architecture diagram"/>
 
 
 This project is an RTL implementation of an SoC subsystem featuring a UART, DMA Controller, and Memory Module, all interconnected through the AMBA APB (Advanced Peripheral Bus) protocol. The design focuses on scalable modular architecture, clean RTL coding practices, and subsystem-level integration concepts commonly used in digital IC design.
