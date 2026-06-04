@@ -24,6 +24,7 @@ NB : *The documentation and directories are not complete. They are updated as th
 
 ## Overview
 
+
 This project is an RTL implementation of an SoC subsystem featuring a UART, DMA Controller, and Memory Module, all interconnected through the AMBA APB (Advanced Peripheral Bus) protocol. The design focuses on scalable modular architecture, clean RTL coding practices, and subsystem-level integration concepts commonly used in digital IC design.
 
 The key objective of this project is to showcase my independent design and engineering process. **The system architecture, pipelining, RTL implementation, debugging, verification strategy, and problem-solving decisions were developed manually WITHOUT following any tutorial or using ANY AI-assisted coding or design tools.** This repository reflects my personal understanding, research, and hands-on learning throughout the development cycle.
@@ -89,3 +90,23 @@ The DMA controller signals the external system when\
 
 This helps the external system to update the memory buffer to continue data transfer.
 
+## Module Descriptions
+### UART
+To be updated
+### DMA Controller
+To be updated
+### Memory
+To be updated
+### APB Interface
+To be updated
+
+## Directory Structure
+To be updated
+
+## Verification
+To be updated
+
+## Simulation Results
+To be updated
+
+## LinkedIn Series
