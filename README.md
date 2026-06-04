@@ -41,7 +41,7 @@ The system consist of a UART module, dual channel DMA controller, memory module 
 ### Detailed Architecture Diagram
 <img width="1968" height="1865" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" alt="Detailed architecture diagram"/>
 
-\
+
 
 
 ### Components
