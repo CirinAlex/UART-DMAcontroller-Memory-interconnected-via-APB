@@ -23,6 +23,7 @@ NB : *The documentation and directories are not complete. They are updated as th
 
 
 ## Overview
+<img width="2952" height="2798" alt="UART DMA Detailed Architecture" src="https://github.com/user-attachments/assets/deb42bb2-00c8-4cef-a26a-8cebd0b6e40a" />
 
 
 This project is an RTL implementation of an SoC subsystem featuring a UART, DMA Controller, and Memory Module, all interconnected through the AMBA APB (Advanced Peripheral Bus) protocol. The design focuses on scalable modular architecture, clean RTL coding practices, and subsystem-level integration concepts commonly used in digital IC design.
@@ -33,6 +34,8 @@ The key objective of this project is to showcase my independent design and engin
 
 ### Overview
 The system consist of a UART module, dual channel DMA controller, memory module all of these interconnected with AMBA APB interface. The system is designed to significantly lower the unwanted CPU attention during the use of UART. The CPU just have to do an initial configuration to UART module and DMA controller; the rest of the data transfer through UART will be handled by DMA controller autonomously.
+
+
 
 ### Components
 - **APB master and slave interfaces** : serves the purpose of data transfer between external system, DMA controller, UART and memory.
