@@ -111,8 +111,53 @@ To be updated
 To be updated
 
 ## Directory Structure
-To be updated
-
+```
+UART-DMAcontroller-Memory-pipelined-with-APB/
+│   README.md
+│
+└───UART/
+    │   README.md
+    │
+    ├───modules/
+    │   │   clk_divider.v
+    │   │   README.md
+    │   │   UARTtop.v
+    │   │   uart_timer.v
+    │   │
+    │   ├───RX/
+    │   │       RXshift.v
+    │   │       RXtop.v
+    │   │
+    │   └───TX/
+    │           TXshift.v
+    │           TXtop.v
+    │
+    ├───testbenches/
+    │   │   clk_divider_tb.v
+    │   │   UART_tb.v
+    │   │   uart_timer_tb.v
+    │   │
+    │   ├───RX/
+    │   │       RXshift_tb.v
+    │   │       RXtop_tb.v
+    │   │
+    │   └───TX/
+    │           TXshift_tb.v
+    │           TXtop_tb.v
+    │
+    └───VCD/
+        │   clk_divider.vcd
+        │   uart.vcd
+        │   uart_timer.vcd
+        │
+        ├───RX/
+        │       RXshift.vcd
+        │       RXtop.vcd
+        │
+        └───TX/
+                TXshift.vcd
+                TXtop.vcd
+```
 ## Verification
 To be updated
 
