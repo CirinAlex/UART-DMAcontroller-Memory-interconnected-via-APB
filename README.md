@@ -85,7 +85,7 @@ The data transfer between DMA controller, UART and memory are carried out via AM
 
 The DMA controller signals the external system when\
 - RX memory buffer is full (RXI)
-- All bytes in TX memory buffer is finished transmitting. (TXI)
-\
+- All bytes in TX memory buffer is finished transmitting. (TXI).
+
 This helps the external system to update the memory buffer to continue data transfer.
 
