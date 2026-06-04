@@ -63,22 +63,22 @@ The system consist of a UART module, dual channel DMA controller, memory module 
   - **RI_in** : signal driven by DMA controller to clear RI.
 
 ### Design and Dataflow
-The system is designed to operate at a clock frequency of 11.0592MHz. This frequency makes it easy to produce standard baud rates after divisions./
-The CLK_DIVIDER divides clock frequency by 32 and the divided clock functions as the clock of UART-TIMER. The real-time value of UART-TIMER (timerCurrentVal) is given to the RX and TX shift registers to recieve and transmit data with respect to the baud rate./
-Baud rate = Fosc/(32 x (256-timerInitVal))/
- /
+The system is designed to operate at a clock frequency of 11.0592MHz. This frequency makes it easy to produce standard baud rates after divisions.\
+The CLK_DIVIDER divides clock frequency by 32 and the divided clock functions as the clock of UART-TIMER. The real-time value of UART-TIMER (timerCurrentVal) is given to the RX and TX shift registers to recieve and transmit data with respect to the baud rate.\
+Baud rate = Fosc/(32 x (256-timerInitVal))\
+\
 The external system follows these steps in order
 - Writes values to the configuration registers according to the need.
 - Enables RE and TE
 - Enables the DMA controller through DMA_enable
 
-After this the DMA controller takes over the handling of data transfer to and from UART./
-In case of TX, the DMA controller starts to read the bytes from Memory_buff_strt_addr and write to the TXbuff(*internal buffer of UART to write the byte to transmit*). From there the TX of UART moves this byte to an internal shift register, adds start and stop bits to create UART frame. The shift register shifts according to the baud rate provided from UART-TIMER. After 1 byte is transferred, the UART TX pulls up the TI, on the positive edge of this TI, the DMA controller increments the internal address pointer register that stores the address of memory to be transmitted. DMA reads the byte from this memory address, writes to UART TXbuff and pulls down TI through TI_in and continues this process until all the bytes in memory buffer for TX is transmitted./
-In case of RX, when RX pin recieves a start-bit, the time to sample RX is calculated from value of timer at that instant and the timerInitVal. The shift register then samples and shifts RX on this time. The timer value to sample RX is calculated such that the sampling is done at the middle of the bit. On completing one full byte, the UART RX writes the byte to RXbuff and pulls up the RI. The DMA controller reads the byte from RXbuff, writes to the memory buffer for RX by incrementing internal address pointer register. It then pulls down the RI through RI_in to resume reception./
+After this the DMA controller takes over the handling of data transfer to and from UART.\
+In case of TX, the DMA controller starts to read the bytes from Memory_buff_strt_addr and write to the TXbuff(*internal buffer of UART to write the byte to transmit*). From there the TX of UART moves this byte to an internal shift register, adds start and stop bits to create UART frame. The shift register shifts according to the baud rate provided from UART-TIMER. After 1 byte is transferred, the UART TX pulls up the TI, on the positive edge of this TI, the DMA controller increments the internal address pointer register that stores the address of memory to be transmitted. DMA reads the byte from this memory address, writes to UART TXbuff and pulls down TI through TI_in and continues this process until all the bytes in memory buffer for TX is transmitted.\
+In case of RX, when RX pin recieves a start-bit, the time to sample RX is calculated from value of timer at that instant and the timerInitVal. The shift register then samples and shifts RX on this time. The timer value to sample RX is calculated such that the sampling is done at the middle of the bit. On completing one full byte, the UART RX writes the byte to RXbuff and pulls up the RI. The DMA controller reads the byte from RXbuff, writes to the memory buffer for RX by incrementing internal address pointer register. It then pulls down the RI through RI_in to resume reception.\
 The data transfer between DMA controller, UART and memory are carried out via AMBA APB interface.
 
-The DMA controller signals the external system when/
+The DMA controller signals the external system when\
 - RX memory buffer is full (RXI)
-- All bytes in TX memory buffer is finished transmitting. (TXI)/
-- This helps the external system to update the memory buffer to continue data transfer.
+- All bytes in TX memory buffer is finished transmitting. (TXI)
+This helps the external system to update the memory buffer to continue data transfer.
 
