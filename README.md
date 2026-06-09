@@ -206,4 +206,33 @@ To be updated
 ### UART
 <img width="1920" height="1080" alt="Screenshot 2026-06-05 022958" src="https://github.com/user-attachments/assets/a0b73915-4dfb-4fd9-8b42-8dc909b9b009" />
 
+### APB Interface
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/014339d6-e0ba-4b46-987a-da19ecbdcff5" width="300"><br>
+      <b>Read Operation (Valid Address)</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/c97a2446-eb76-4c08-a1d9-006ea6d9e7de" width="300"><br>
+      <b>Write Operation (Valid Address)</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/0ea9b025-09f6-4f49-a9c9-4f0cc4439a1d" width="300"><br>
+      <b>Write Operation (Error Condition)</b>
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/fa1e5e0d-e903-444a-8249-6b19cc25da5b" width="300"><br>
+      <b>Read Operation (Error Condition)</b>
+    </td>
+  </tr>
+</table>
+
+
+<img width="1268" height="652" alt="read-no-error" src="https://github.com/user-attachments/assets/014339d6-e0ba-4b46-987a-da19ecbdcff5" />
+<img width="1409" height="718" alt="write-no-error" src="https://github.com/user-attachments/assets/c97a2446-eb76-4c08-a1d9-006ea6d9e7de" />
+<img width="1355" height="655" alt="write-yes-error" src="https://github.com/user-attachments/assets/0ea9b025-09f6-4f49-a9c9-4f0cc4439a1d" />
+<img width="1351" height="648" alt="read-yes-error" src="https://github.com/user-attachments/assets/fa1e5e0d-e903-444a-8249-6b19cc25da5b" />
+
+
 ## LinkedIn Series
