@@ -1,0 +1,369 @@
+$date
+	Mon Jun  8 23:09:47 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module APB_requester_tb $end
+$var wire 1 ! ready $end
+$var wire 1 " error $end
+$var wire 8 # data_r [7:0] $end
+$var wire 1 $ PWRITE $end
+$var wire 8 % PWDATA [7:0] $end
+$var wire 2 & PSEL [1:0] $end
+$var wire 1 ' PENABLE $end
+$var wire 8 ( PADDR [7:0] $end
+$var reg 1 ) ENABLE_DMA $end
+$var reg 8 * PRDATA [7:0] $end
+$var reg 2 + PREADY [1:0] $end
+$var reg 2 , PSLVERR [1:0] $end
+$var reg 8 - addr [7:0] $end
+$var reg 8 . data_w [7:0] $end
+$var reg 1 / dir $end
+$var reg 1 0 enable $end
+$var reg 1 1 master_clk $end
+$var reg 8 2 read_data [7:0] $end
+$var reg 8 3 write_data [7:0] $end
+$var integer 32 4 op [31:0] $end
+$scope module dut $end
+$var wire 1 ) ENABLE_DMA $end
+$var wire 1 1 PCLK $end
+$var wire 8 5 PRDATA [7:0] $end
+$var wire 2 6 PREADY [1:0] $end
+$var wire 2 7 PSLVERR [1:0] $end
+$var wire 8 8 addr [7:0] $end
+$var wire 8 9 data_w [7:0] $end
+$var wire 1 / dir $end
+$var wire 1 0 enable $end
+$var parameter 8 : MEMORY_END_ADDR $end
+$var parameter 8 ; MEMORY_STRT_ADDR $end
+$var parameter 8 < UART_RX_ADDR $end
+$var parameter 8 = UART_TX_ADDR $end
+$var parameter 32 > WIDTH $end
+$var reg 8 ? PADDR [7:0] $end
+$var reg 1 ' PENABLE $end
+$var reg 1 @ PERIPHERAL_INDEX $end
+$var reg 2 A PSEL [1:0] $end
+$var reg 8 B PWDATA [7:0] $end
+$var reg 1 $ PWRITE $end
+$var reg 8 C data_r [7:0] $end
+$var reg 1 " error $end
+$var reg 1 ! ready $end
+$var reg 2 D state [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b111 >
+b10000000 =
+b10000001 <
+b0 ;
+b1111111 :
+$end
+#0
+$dumpvars
+bx D
+bx C
+bx B
+bx A
+x@
+bx ?
+bx 9
+bx 8
+b0 7
+b0 6
+bx 5
+b0 4
+bx 3
+bx 2
+01
+00
+x/
+bx .
+bx -
+b0 ,
+b0 +
+bx *
+0)
+bx (
+x'
+bx &
+bx %
+x$
+bx #
+x"
+x!
+$end
+#1
+11
+#2
+01
+#3
+0"
+bz (
+bz ?
+bz %
+bz B
+z$
+b0 &
+b0 A
+b0 D
+11
+1)
+#4
+01
+#5
+11
+#6
+01
+#7
+11
+#8
+01
+#9
+11
+#10
+01
+#11
+11
+#12
+01
+#13
+11
+1/
+b10000 -
+b10000 8
+b1100111 .
+b1100111 9
+#14
+01
+#15
+b1 D
+0'
+b10000 (
+b10000 ?
+b1100111 %
+b1100111 B
+1$
+0!
+0@
+b1 &
+b1 A
+11
+10
+#16
+01
+#17
+b1 4
+b1100111 3
+b1 +
+b1 6
+b10 D
+1'
+11
+#18
+01
+#19
+00
+0'
+b0 &
+b0 A
+b0 D
+1!
+z$
+bz (
+bz ?
+bz %
+bz B
+11
+#20
+01
+#21
+11
+#22
+01
+#23
+11
+#24
+01
+#25
+11
+#26
+01
+#27
+11
+#28
+01
+#29
+11
+#30
+01
+#31
+11
+#32
+01
+#33
+11
+#34
+01
+#35
+11
+#36
+01
+#37
+11
+#38
+01
+#39
+11
+#40
+01
+#41
+11
+#42
+01
+#43
+11
+#44
+01
+#45
+11
+0/
+b1 -
+b1 8
+b1011001 2
+b0 +
+b0 6
+#46
+01
+#47
+b1 D
+b1 (
+b1 ?
+0$
+0!
+b1 &
+b1 A
+11
+10
+#48
+01
+#49
+b1011001 *
+b1011001 5
+b1 +
+b1 6
+b10 D
+1'
+11
+#50
+01
+#51
+00
+0'
+b0 &
+b0 A
+b0 D
+1!
+z$
+bz (
+bz ?
+b1011001 #
+b1011001 C
+11
+#52
+01
+#53
+11
+#54
+01
+#55
+11
+#56
+01
+#57
+11
+#58
+01
+#59
+11
+#60
+01
+#61
+11
+#62
+01
+#63
+11
+#64
+01
+#65
+11
+#66
+01
+#67
+11
+#68
+01
+#69
+11
+#70
+01
+#71
+11
+#72
+01
+#73
+11
+#74
+01
+#75
+11
+#76
+01
+#77
+11
+#78
+01
+#79
+11
+#80
+01
+#81
+11
+#82
+01
+#83
+11
+#84
+01
+#85
+11
+#86
+01
+#87
+11
+#88
+01
+#89
+11
+#90
+01
+#91
+11
+#92
+01
+#93
+11
+#94
+01
+#95
+11
+#96
+01
+#97
+11

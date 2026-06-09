@@ -1,0 +1,527 @@
+$date
+	Tue Jun  9 10:54:00 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module APB_req_comp_tb $end
+$var wire 1 ! ready_req $end
+$var wire 1 " error_req $end
+$var wire 1 # enable_comp $end
+$var wire 1 $ dir_comp $end
+$var wire 8 % data_w_comp [7:0] $end
+$var wire 8 & data_r_req [7:0] $end
+$var wire 8 ' addr_comp [7:0] $end
+$var wire 1 ( PWRITE $end
+$var wire 8 ) PWDATA [7:0] $end
+$var wire 2 * PSLVERR [1:0] $end
+$var wire 2 + PSEL [1:0] $end
+$var wire 2 , PREADY [1:0] $end
+$var wire 8 - PRDATA [7:0] $end
+$var wire 1 . PENABLE $end
+$var wire 8 / PADDR [7:0] $end
+$var reg 1 0 ENABLE_DMA $end
+$var reg 8 1 addr_req [7:0] $end
+$var reg 8 2 data_r_comp [7:0] $end
+$var reg 8 3 data_read [7:0] $end
+$var reg 8 4 data_to_read [7:0] $end
+$var reg 8 5 data_to_write [7:0] $end
+$var reg 8 6 data_w_req [7:0] $end
+$var reg 8 7 data_written [7:0] $end
+$var reg 1 8 dir_req $end
+$var reg 1 9 enable_req $end
+$var reg 1 : error_comp $end
+$var reg 1 ; master_clk $end
+$var reg 1 < ready_comp $end
+$var integer 32 = test_with_wait_state [31:0] $end
+$scope module dut1 $end
+$var wire 1 0 ENABLE_DMA $end
+$var wire 1 ; PCLK $end
+$var wire 2 > PREADY [1:0] $end
+$var wire 2 ? PSLVERR [1:0] $end
+$var wire 8 @ addr [7:0] $end
+$var wire 8 A data_w [7:0] $end
+$var wire 1 8 dir $end
+$var wire 1 9 enable $end
+$var wire 8 B PRDATA [7:0] $end
+$var parameter 8 C MEMORY_END_ADDR $end
+$var parameter 8 D MEMORY_STRT_ADDR $end
+$var parameter 8 E UART_RX_ADDR $end
+$var parameter 8 F UART_TX_ADDR $end
+$var parameter 32 G WIDTH $end
+$var reg 8 H PADDR [7:0] $end
+$var reg 1 . PENABLE $end
+$var reg 1 I PERIPHERAL_INDEX $end
+$var reg 2 J PSEL [1:0] $end
+$var reg 8 K PWDATA [7:0] $end
+$var reg 1 ( PWRITE $end
+$var reg 8 L data_r [7:0] $end
+$var reg 1 " error $end
+$var reg 1 ! ready $end
+$var reg 2 M state [1:0] $end
+$upscope $end
+$scope module dut2 $end
+$var wire 1 0 ENABLE_DMA $end
+$var wire 8 N PADDR [7:0] $end
+$var wire 1 ; PCLK $end
+$var wire 1 . PENABLE $end
+$var wire 1 O PSEL $end
+$var wire 8 P PWDATA [7:0] $end
+$var wire 1 ( PWRITE $end
+$var wire 8 Q data_r [7:0] $end
+$var wire 1 : error $end
+$var wire 1 < ready $end
+$var reg 8 R PRDATA [7:0] $end
+$var reg 1 S PREADY $end
+$var reg 1 T PSLVERR $end
+$var reg 8 U addr [7:0] $end
+$var reg 8 V data_w [7:0] $end
+$var reg 1 $ dir $end
+$var reg 1 # enable $end
+$var reg 2 W state [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b111 G
+b10000000 F
+b10000001 E
+b0 D
+b1111111 C
+$end
+#0
+$dumpvars
+bx W
+bx V
+bx U
+xT
+1S
+bx R
+bz Q
+bx P
+xO
+bx N
+bx M
+bx L
+bx K
+bx J
+xI
+bx H
+bx B
+bz A
+bx @
+bzx ?
+bz1 >
+bx =
+1<
+0;
+0:
+09
+x8
+bx 7
+bz 6
+bx 5
+b1100111 4
+bx 3
+bz 2
+bx 1
+00
+bx /
+x.
+bx -
+bz1 ,
+bx +
+bzx *
+bx )
+x(
+bx '
+bx &
+bx %
+x$
+0#
+x"
+x!
+$end
+#1
+1;
+#2
+0;
+#3
+1;
+#4
+0;
+#5
+0O
+bz &
+bz L
+0"
+bz /
+bz H
+bz N
+bz )
+bz K
+bz P
+z(
+b0 +
+b0 J
+b0 M
+bz0 *
+bz0 ?
+0T
+bz -
+bz B
+bz R
+z$
+bz %
+bz V
+bz '
+bz U
+b0 W
+1;
+10
+#6
+0.
+b1100111 /
+b1100111 H
+b1100111 N
+b1100111 )
+b1100111 K
+b1100111 P
+1(
+0!
+1O
+0I
+b1 +
+b1 J
+0;
+19
+18
+b1100111 1
+b1100111 @
+b1100111 6
+b1100111 A
+b1 =
+b1100111 5
+#7
+bz0 ,
+bz0 >
+0S
+0<
+1#
+b1100111 %
+b1100111 V
+b1 W
+1.
+b1 M
+1;
+#8
+0;
+#9
+b10 M
+b10 W
+1$
+b1100111 '
+b1100111 U
+1;
+#10
+0;
+#11
+1;
+#12
+bz1 ,
+bz1 >
+1S
+0#
+0;
+b1100111 7
+1<
+#13
+bz 1
+bz @
+z8
+09
+0O
+0.
+b0 +
+b0 J
+b0 M
+1!
+z(
+bz /
+bz H
+bz N
+bz )
+bz K
+bz P
+b0 W
+1;
+#14
+0;
+#15
+1;
+#16
+0;
+#17
+1;
+#18
+0;
+#19
+1;
+#20
+0;
+#21
+1;
+#22
+b1100111 /
+b1100111 H
+b1100111 N
+b1000011 )
+b1000011 K
+b1000011 P
+1(
+0!
+1O
+b1 +
+b1 J
+0;
+19
+18
+b1100111 1
+b1100111 @
+b1000011 6
+b1000011 A
+b0 =
+b1000011 5
+#23
+b1000011 7
+1#
+b1000011 %
+b1000011 V
+b1 W
+1.
+b1 M
+1;
+#24
+0;
+#25
+b10 M
+b10 W
+1;
+#26
+0;
+#27
+bz 1
+bz @
+z8
+09
+0O
+b0 W
+0#
+0.
+b0 +
+b0 J
+b0 M
+1!
+z(
+bz /
+bz H
+bz N
+bz )
+bz K
+bz P
+1;
+#28
+0;
+#29
+1;
+#30
+0;
+#31
+1;
+#32
+0;
+#33
+1;
+#34
+0;
+#35
+1;
+#36
+0;
+#37
+1;
+#38
+0;
+#39
+1;
+#40
+0;
+#41
+1;
+#42
+b1100111 /
+b1100111 H
+b1100111 N
+0(
+0!
+1O
+b1 +
+b1 J
+0;
+19
+08
+b1100111 1
+b1100111 @
+b1 =
+#43
+bz0 ,
+bz0 >
+0S
+0<
+1#
+b1 W
+1.
+b1 M
+1;
+#44
+0;
+#45
+b10 M
+b10 W
+0$
+1;
+#46
+0;
+#47
+1;
+#48
+bz1 ,
+bz1 >
+1S
+0#
+0;
+b1100111 2
+b1100111 Q
+1<
+#49
+bz 3
+bz 1
+bz @
+z8
+09
+0O
+0.
+b0 +
+b0 J
+b0 M
+1!
+z(
+bz /
+bz H
+bz N
+b0 W
+b1100111 -
+b1100111 B
+b1100111 R
+1;
+#50
+0;
+#51
+bz -
+bz B
+bz R
+1;
+#52
+0;
+#53
+1;
+#54
+0;
+#55
+1;
+#56
+0;
+#57
+1;
+#58
+b1100111 /
+b1100111 H
+b1100111 N
+0(
+0!
+1O
+b1 +
+b1 J
+0;
+19
+08
+b1100111 1
+b1100111 @
+b0 =
+b1000011 4
+#59
+b1000011 2
+b1000011 Q
+1#
+b1 W
+1.
+b1 M
+1;
+#60
+0;
+#61
+b10 M
+b10 W
+1;
+#62
+0;
+#63
+bz 1
+bz @
+z8
+09
+0O
+b0 W
+0#
+b1000011 -
+b1000011 B
+b1000011 R
+0.
+b0 +
+b0 J
+b0 M
+1!
+z(
+bz /
+bz H
+bz N
+1;
+#64
+0;
+#65
+bz -
+bz B
+bz R
+1;
+#66
+0;
+#67
+1;
+#68
+0;
+#69
+1;
+#70
+0;
+#71
+1;
+#72
+0;
+#73
+1;
+#74
+0;

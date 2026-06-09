@@ -2,9 +2,11 @@
 
 
 // APB interface module
-module APB(
-	//input reg master_clk;
-	input reg pwakeup,	// wakeup signal from external source, used to initialize state variable
+module APB_requester(
+
+	input reg PCLK,	// clock signal
+
+	input reg ENABLE_DMA,	// to initialize state variable, buses and signals
 
 // ports for master peripheral (here master is DMA)
 	input reg[7:0] data_w, 	// data to write to the peripheral
@@ -20,12 +22,12 @@ module APB(
 	input reg[7:0] PRDATA,  // data read bus
 	output reg[7:0] PADDR,	 // address bus
 	output reg[1:0] PSEL,	 // select lines, 1 for each peripheral. here, PSEL[1] for UART and PSEL[0] for memory
-	output reg PCLK,	 // clock line for data transfer sync
 	output reg PWRITE,	 // read/write control line, write=1, read=0
 	output reg PENABLE, 	 // enable signal for APB
 	input reg[1:0] PREADY,	 // ready signals, PREADY[1] for UART and PREADY[0] for memory
-	input PSLVERR		// error response, used to indicate invalid address or direction.
+	input reg[1:0] PSLVERR		// error response, used to indicate invalid address or direction.
 );
+
 
 
 // MEMORY_X_ADDR => memory address range
@@ -35,10 +37,11 @@ parameter MEMORY_STRT_ADDR = 8'h00, MEMORY_END_ADDR = 8'h7f, UART_TX_ADDR = 8'h8
 
 
 reg[1:0] state; //state variable
+reg PERIPHERAL_INDEX; // used as index for PREADY and PSLVERR
 
 
-// initializing state variable on external wakeup signal
-always @(pwakeup)
+// initializing state variable on ENABLE_DMA, DMA is enabled once and not disabled even if TXI or RXI is raised
+always @(posedge ENABLE_DMA)
 begin
 	state <= 2'b00;
 	PSEL <= 2'b00;
@@ -46,6 +49,7 @@ begin
 	PWDATA <= 8'bz;
 	PADDR <= 8'bz;
 	error <= 0;
+	data_r <= 8'bz;
 end
 
 
@@ -66,78 +70,101 @@ begin
 end
 
 
-// On posedge of enable, drive PSELx to HIGH based on the addr, ie. address to PSEL mapping
+// On posedge of enable, drive PSELx to HIGH based on the addr, ie. address to PSEL mapping and initializing PERIPHERAL_INDEX to be used as index in the FSM.
 always @(posedge enable)
 begin
 	if(addr[WIDTH:0] >= MEMORY_STRT_ADDR && addr[WIDTH:0] <= MEMORY_END_ADDR)
+	begin
 		PSEL[0] = 1;
-	else if(addr == UART_RX_ADDR || addr == UART_TX_ADDR)
-		PSEL[1] = 1;
+		PERIPHERAL_INDEX = 1'b0;
+	end
 
+	else if(addr == UART_RX_ADDR || addr == UART_TX_ADDR)
+	begin
+		PSEL[1] = 1;
+		PERIPHERAL_INDEX = 1'b1;
+	end
 end
 
 
 
 // FSM
-always @(PCLK)
+always @(posedge PCLK)
 begin
 	
 	case(state)
 		2'b00 : begin
+			
 			if(PSEL[1:0] != 2'b00)
+				begin
 				state <= 2'b01;
+				PENABLE <= 1;
+				end
 			end
 
 		// SETUP
 		2'b01 : begin
-			PENABLE <= 1;
+			//PENABLE <= 1;
 			state <= 2'b10;
 			end
 
 		// ACCESS
 		2'b10 : begin
-			
-			// ready and error cases
-			case({PREADY, PSLVERR})
-			2'b10 : begin
-			
-				case(PWRITE)
-					1 : begin
-						// keeping data bus in high impedance after transfer
-						PWDATA <= 8'bz;
+
+			// for optional wait state
+			if(PREADY[PERIPHERAL_INDEX]==1)
+				begin
+				// checks only the specific line to the selected peripheral
+				case({PREADY[PERIPHERAL_INDEX], PSLVERR[PERIPHERAL_INDEX]})
+				2'b10 : begin
+				
+					case(PWRITE)
+						1 : begin
+							// keeping data bus in high impedance after transfer
+							PWDATA <= 8'bz;
+						end
+
+						0 : begin
+							// reading data to data_r (giving to master peripheral)
+							data_r <= PRDATA;
+						end
+					endcase
+					// pulling addr bus and pwrite to high impedance after transfer is complete, also signalling 
+					// transfer complete to master peripheral by pulling ready HIGH
+					PADDR <= 8'bz;
+					PWRITE <= 1'bz;
+					ready <= 1;
+					state <= 2'b00;
+					PSEL <= 2'b00;
+					PENABLE <= 0;
+					PADDR <= 8'bz;
+					PWDATA <= 8'bz;
 					end
 
-					0 : begin
-						// reading data to data_r (giving to master peripheral)
-						data_r <= PRDATA;
+				// error HIGH, forwards to master and goes to state 00
+				2'b11 : begin 
+						state <= 2'b00;
+						PSEL <= 2'b00;
+						PENABLE <= 0;
+						ready <= 1;
+						error <= 1; // propogated to the CPU
+						PADDR <= 8'bz;
+						PWDATA <= 8'bz;
+						PWRITE <= 1'bz;
+					end
+
+				// remains in ACCESS state
+				2'b0x : begin
+					state <= 2'b10;
 					end
 				endcase
-				// pulling addr bus and pwrite to high impedance after transfer is complete, also signalling 
-				// transfer complete to master peripheral by pulling ready HIGH
-				PADDR <= 8'bz;
-				PWRITE <= 1'bz;
-				ready <= 1;
-				state <= 2'b00;
-				PSEL <= 2'b00;
-			end
-
-			// error HIGH, forwards to master and goes to state 00
-			2'b11 : begin
-					state <= 2'b00;
-					error <= 1;
 				end
-
-			// remains in ACCESS state
-			2'b0x : state <= 2'b10;
+				
+			end
 
 	endcase
 
-
-
 end
-
-
-
 
 
 
