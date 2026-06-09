@@ -47,13 +47,13 @@ begin
 	data_w <= 8'bz;
 	dir <= 1'bz;
 	PRDATA <= 8'bz;
-	//PREADY <= 0;
+
 	PSLVERR <= 0;
 
 end
 
 
-// enable ready logic
+// enable ready complementing logic
 always @(posedge ready)
 begin
 	enable <= 0;
@@ -67,46 +67,46 @@ always @(posedge PCLK)
 begin
 	
 	case(state)
-		
+		// IDLE state
 		2'b00 : begin
-			//PREADY <= 0;
-			PRDATA <= 8'bz;
-			PSLVERR <= 0;
+
+			PSLVERR <= 0; // pulls down PSLVERR enabled in previous transfer
+
+			// when this peripheral is selected, forwards address, operation, data write bus to peripheral memory manager and
+			// enables it. Also moves to SETUP state
 			if(PSEL==1)
 				begin
-				state <= 2'b01;
-				end
-			if(PWRITE==1)
-				begin
-				data_w <= PWDATA;
-				end
-			end
-		
-		2'b01 : begin
 
 				addr <= PADDR;
 				dir <= PWRITE;
+				if(PWRITE==1)
+					begin
+					data_w <= PWDATA;
+					end
 
+				enable <= 1;
+
+				state <= 2'b01;
+				end
+			end
+		
+		// SETUP state
+		2'b01 : begin // PENABLE is HIGH here, which means any bus or control signal cannot be changed
+				// this time is utilized to perform r/w to peripheral
+			
+			// goes to next state when peripheral finish the operation (ready signal)
+			if(ready==1 || error==1)
+				begin
 				state <= 2'b10;
+				PSLVERR <= error;
+				end
 
 			end
 
-		2'b10 : begin
-			if(ready==1 || error==1)
-				begin
-				case(PWRITE)
-	
-					0 : begin
-						PRDATA <= data_r;
-					    end
-
-				endcase
-	
-				PREADY <= 1;
+		// ACCESS state
+		2'b10 : begin // goes to IDLE and enable of peripheral is made LOW
 				enable <= 0;
 				state <= 2'b00;
-				PSLVERR <= error;
-				end
 			end
 
 
@@ -115,16 +115,57 @@ begin
 end
 
 
-always @(posedge PENABLE)
+// logic of setting PREADY
+always @(PENABLE)
 begin
-	enable <= 1;
+
+if(PENABLE==0)
+	begin
+	PREADY <= 0;
+	end
+
+else
+	begin
+	if(ready==1)
+	begin
+		PREADY <= 1;
+	end
+
+	end
+
 end
 
-always @(ready)
+
+// driving PSLVERR directly using error signal from peripheral
+always @(error)
+begin
+	if(error==1)
+	PSLVERR = 1;
+
+end
+
+
+
+// PREADY always high when wait state FALSE.
+// PREADY high when ready(transfer complete) high when wait state TRUE.
+always @(ready, posedge PREADY)
 begin
 	PREADY <= ready;
+	if(ready==1)
+	begin
+
+		if(PWRITE==0)
+ 		begin
+		PRDATA <= data_r;
+		end
+
+	end
 end
 
 
 
 endmodule
+
+
+
+

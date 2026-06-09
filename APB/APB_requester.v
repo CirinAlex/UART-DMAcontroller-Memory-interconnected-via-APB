@@ -84,17 +84,21 @@ begin
 		PSEL[1] = 1;
 		PERIPHERAL_INDEX = 1'b1;
 	end
+	/*else
+		error <= 1;
+		ready <= 1;*/
 end
 
 
 
 // FSM
-always @(posedge PCLK)
+always @(posedge PCLK, posedge PENABLE)
 begin
 	
 	case(state)
+		// IDLE
 		2'b00 : begin
-			
+			// goes to next state on PSEL and PENABLE pulled HIGH
 			if(PSEL[1:0] != 2'b00)
 				begin
 				state <= 2'b01;
@@ -103,12 +107,13 @@ begin
 			end
 
 		// SETUP
+		// gives requester the time to complete the data transfer
 		2'b01 : begin
-			//PENABLE <= 1;
 			state <= 2'b10;
 			end
 
 		// ACCESS
+		// transfer complete and requester pulls up PREADY and PSLVERR(if address or operation on an address is invalid) to indicate this
 		2'b10 : begin
 
 			// for optional wait state
@@ -129,7 +134,7 @@ begin
 							data_r <= PRDATA;
 						end
 					endcase
-					// pulling addr bus and pwrite to high impedance after transfer is complete, also signalling 
+					// pulling addr bus and pwrite to high impedance after transfer is complete, also signalling
 					// transfer complete to master peripheral by pulling ready HIGH
 					PADDR <= 8'bz;
 					PWRITE <= 1'bz;

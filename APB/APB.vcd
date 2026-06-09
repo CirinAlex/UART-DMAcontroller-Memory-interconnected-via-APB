@@ -1,5 +1,5 @@
 $date
-	Tue Jun  9 10:54:00 2026
+	Tue Jun  9 16:53:57 2026
 $end
 $version
 	Icarus Verilog
@@ -23,113 +23,131 @@ $var wire 2 , PREADY [1:0] $end
 $var wire 8 - PRDATA [7:0] $end
 $var wire 1 . PENABLE $end
 $var wire 8 / PADDR [7:0] $end
-$var reg 1 0 ENABLE_DMA $end
-$var reg 8 1 addr_req [7:0] $end
-$var reg 8 2 data_r_comp [7:0] $end
-$var reg 8 3 data_read [7:0] $end
-$var reg 8 4 data_to_read [7:0] $end
-$var reg 8 5 data_to_write [7:0] $end
-$var reg 8 6 data_w_req [7:0] $end
-$var reg 8 7 data_written [7:0] $end
-$var reg 1 8 dir_req $end
-$var reg 1 9 enable_req $end
-$var reg 1 : error_comp $end
-$var reg 1 ; master_clk $end
-$var reg 1 < ready_comp $end
-$var integer 32 = test_with_wait_state [31:0] $end
+$var parameter 8 0 TEST_ADDR_READ_WITHOUT_WW $end
+$var parameter 8 1 TEST_ADDR_READ_WITH_WW $end
+$var parameter 8 2 TEST_ADDR_WRITE_WITHOUT_WW $end
+$var parameter 8 3 TEST_ADDR_WRITE_WITH_WW $end
+$var parameter 8 4 TEST_DATA_READ_WITHOUT_WW $end
+$var parameter 8 5 TEST_DATA_READ_WITH_WW $end
+$var parameter 8 6 TEST_DATA_WRITE_WITHOUT_WW $end
+$var parameter 8 7 TEST_DATA_WRITE_WITH_WW $end
+$var parameter 8 8 VALID_ADDR $end
+$var reg 1 9 ENABLE_DMA $end
+$var reg 8 : addr_req [7:0] $end
+$var reg 8 ; data_r_comp [7:0] $end
+$var reg 8 < data_read [7:0] $end
+$var reg 8 = data_to_read [7:0] $end
+$var reg 8 > data_to_write [7:0] $end
+$var reg 8 ? data_w_req [7:0] $end
+$var reg 8 @ data_written [7:0] $end
+$var reg 1 A dir_req $end
+$var reg 1 B enable_req $end
+$var reg 1 C error_comp $end
+$var reg 1 D master_clk $end
+$var reg 1 E ready_comp $end
+$var integer 32 F test_with_wait_state [31:0] $end
 $scope module dut1 $end
-$var wire 1 0 ENABLE_DMA $end
-$var wire 1 ; PCLK $end
-$var wire 2 > PREADY [1:0] $end
-$var wire 2 ? PSLVERR [1:0] $end
-$var wire 8 @ addr [7:0] $end
-$var wire 8 A data_w [7:0] $end
-$var wire 1 8 dir $end
-$var wire 1 9 enable $end
-$var wire 8 B PRDATA [7:0] $end
-$var parameter 8 C MEMORY_END_ADDR $end
-$var parameter 8 D MEMORY_STRT_ADDR $end
-$var parameter 8 E UART_RX_ADDR $end
-$var parameter 8 F UART_TX_ADDR $end
-$var parameter 32 G WIDTH $end
-$var reg 8 H PADDR [7:0] $end
+$var wire 1 9 ENABLE_DMA $end
+$var wire 1 D PCLK $end
+$var wire 2 G PREADY [1:0] $end
+$var wire 2 H PSLVERR [1:0] $end
+$var wire 8 I addr [7:0] $end
+$var wire 8 J data_w [7:0] $end
+$var wire 1 A dir $end
+$var wire 1 B enable $end
+$var wire 8 K PRDATA [7:0] $end
+$var parameter 8 L MEMORY_END_ADDR $end
+$var parameter 8 M MEMORY_STRT_ADDR $end
+$var parameter 8 N UART_RX_ADDR $end
+$var parameter 8 O UART_TX_ADDR $end
+$var parameter 32 P WIDTH $end
+$var reg 8 Q PADDR [7:0] $end
 $var reg 1 . PENABLE $end
-$var reg 1 I PERIPHERAL_INDEX $end
-$var reg 2 J PSEL [1:0] $end
-$var reg 8 K PWDATA [7:0] $end
+$var reg 1 R PERIPHERAL_INDEX $end
+$var reg 2 S PSEL [1:0] $end
+$var reg 8 T PWDATA [7:0] $end
 $var reg 1 ( PWRITE $end
-$var reg 8 L data_r [7:0] $end
+$var reg 8 U data_r [7:0] $end
 $var reg 1 " error $end
 $var reg 1 ! ready $end
-$var reg 2 M state [1:0] $end
+$var reg 2 V state [1:0] $end
 $upscope $end
 $scope module dut2 $end
-$var wire 1 0 ENABLE_DMA $end
-$var wire 8 N PADDR [7:0] $end
-$var wire 1 ; PCLK $end
+$var wire 1 9 ENABLE_DMA $end
+$var wire 8 W PADDR [7:0] $end
+$var wire 1 D PCLK $end
 $var wire 1 . PENABLE $end
-$var wire 1 O PSEL $end
-$var wire 8 P PWDATA [7:0] $end
+$var wire 1 X PSEL $end
+$var wire 8 Y PWDATA [7:0] $end
 $var wire 1 ( PWRITE $end
-$var wire 8 Q data_r [7:0] $end
-$var wire 1 : error $end
-$var wire 1 < ready $end
-$var reg 8 R PRDATA [7:0] $end
-$var reg 1 S PREADY $end
-$var reg 1 T PSLVERR $end
-$var reg 8 U addr [7:0] $end
-$var reg 8 V data_w [7:0] $end
+$var wire 8 Z data_r [7:0] $end
+$var wire 1 C error $end
+$var wire 1 E ready $end
+$var reg 8 [ PRDATA [7:0] $end
+$var reg 1 \ PREADY $end
+$var reg 1 ] PSLVERR $end
+$var reg 8 ^ addr [7:0] $end
+$var reg 8 _ data_w [7:0] $end
 $var reg 1 $ dir $end
 $var reg 1 # enable $end
-$var reg 2 W state [1:0] $end
+$var reg 2 ` state [1:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
-b111 G
-b10000000 F
-b10000001 E
-b0 D
-b1111111 C
+b111 P
+b10000000 O
+b10000001 N
+b0 M
+b1111111 L
+b0 8
+b1100111 7
+b1110110 6
+b1100111 5
+b1110110 4
+b0 3
+b0 2
+b0 1
+b0 0
 $end
 #0
 $dumpvars
+bx `
+bx _
+bx ^
+x]
+1\
+bx [
+bz Z
+bx Y
+xX
 bx W
 bx V
 bx U
-xT
-1S
-bx R
-bz Q
-bx P
-xO
-bx N
-bx M
-bx L
+bx T
+bx S
+xR
+bx Q
 bx K
-bx J
-xI
-bx H
-bx B
-bz A
+bz J
+bx I
+bzx H
+bz1 G
+bx F
+1E
+0D
+0C
+0B
+xA
 bx @
-bzx ?
-bz1 >
+bz ?
+bx >
 bx =
-1<
-0;
-0:
+bx <
+bz ;
+bx :
 09
-x8
-bx 7
-bz 6
-bx 5
-b1100111 4
-bx 3
-bz 2
-bx 1
-00
 bx /
 x.
 bx -
@@ -147,381 +165,392 @@ x"
 x!
 $end
 #1
-1;
+1D
 #2
-0;
+0D
 #3
-1;
+1D
 #4
-0;
+0D
 #5
-0O
+0X
 bz &
-bz L
+bz U
 0"
 bz /
-bz H
-bz N
+bz Q
+bz W
 bz )
-bz K
-bz P
+bz T
+bz Y
 z(
 b0 +
-b0 J
-b0 M
+b0 S
+b0 V
 bz0 *
-bz0 ?
-0T
+bz0 H
+0]
 bz -
-bz B
-bz R
+bz K
+bz [
 z$
 bz %
-bz V
+bz _
 bz '
-bz U
-b0 W
-1;
-10
+bz ^
+b0 `
+1D
+19
 #6
+bz0 ,
+bz0 G
+0\
 0.
-b1100111 /
-b1100111 H
-b1100111 N
+b0 /
+b0 Q
+b0 W
 b1100111 )
-b1100111 K
-b1100111 P
+b1100111 T
+b1100111 Y
 1(
 0!
-1O
-0I
+1X
+0R
 b1 +
-b1 J
-0;
-19
-18
-b1100111 1
-b1100111 @
-b1100111 6
-b1100111 A
-b1 =
-b1100111 5
+b1 S
+0D
+1B
+1A
+b0 :
+b0 I
+b1100111 ?
+b1100111 J
+b1 F
+b1100111 >
 #7
-bz0 ,
-bz0 >
-0S
-0<
+0E
+1.
+b10 V
+b1 `
 1#
 b1100111 %
-b1100111 V
-b1 W
-1.
-b1 M
-1;
-#8
-0;
-#9
-b10 M
-b10 W
+b1100111 _
 1$
-b1100111 '
-b1100111 U
-1;
+b0 '
+b0 ^
+1D
+#8
+0D
+#9
+1D
 #10
-0;
+0D
 #11
-1;
+1D
 #12
 bz1 ,
-bz1 >
-1S
+bz1 G
+1\
 0#
-0;
-b1100111 7
-1<
+0D
+b1100111 @
+1E
 #13
-bz 1
-bz @
-z8
-09
-0O
+bz0 ,
+bz0 G
+0\
+bz :
+bz I
+zA
+0B
+0X
 0.
 b0 +
-b0 J
-b0 M
+b0 S
+b0 V
 1!
 z(
 bz /
-bz H
-bz N
+bz Q
+bz W
 bz )
-bz K
-bz P
-b0 W
-1;
+bz T
+bz Y
+b10 `
+1D
 #14
-0;
+0D
 #15
-1;
+b0 `
+1D
 #16
-0;
+0D
 #17
-1;
+1D
 #18
-0;
+0D
 #19
-1;
+1D
 #20
-0;
+0D
 #21
-1;
+1D
 #22
-b1100111 /
-b1100111 H
-b1100111 N
-b1000011 )
-b1000011 K
-b1000011 P
+b0 /
+b0 Q
+b0 W
+b1110110 )
+b1110110 T
+b1110110 Y
 1(
 0!
-1O
+1X
 b1 +
-b1 J
-0;
-19
-18
-b1100111 1
-b1100111 @
-b1000011 6
-b1000011 A
-b0 =
-b1000011 5
+b1 S
+0D
+1B
+1A
+b0 :
+b0 I
+b1110110 ?
+b1110110 J
+b0 F
+b1110110 >
 #23
-b1000011 7
-1#
-b1000011 %
-b1000011 V
-b1 W
-1.
-b1 M
-1;
-#24
-0;
-#25
-b10 M
-b10 W
-1;
-#26
-0;
-#27
-bz 1
-bz @
-z8
-09
-0O
-b0 W
-0#
-0.
-b0 +
-b0 J
-b0 M
-1!
-z(
-bz /
-bz H
-bz N
-bz )
-bz K
-bz P
-1;
-#28
-0;
-#29
-1;
-#30
-0;
-#31
-1;
-#32
-0;
-#33
-1;
-#34
-0;
-#35
-1;
-#36
-0;
-#37
-1;
-#38
-0;
-#39
-1;
-#40
-0;
-#41
-1;
-#42
-b1100111 /
-b1100111 H
-b1100111 N
-0(
-0!
-1O
-b1 +
-b1 J
-0;
-19
-08
-b1100111 1
-b1100111 @
-b1 =
-#43
-bz0 ,
-bz0 >
-0S
-0<
-1#
-b1 W
-1.
-b1 M
-1;
-#44
-0;
-#45
-b10 M
-b10 W
-0$
-1;
-#46
-0;
-#47
-1;
-#48
 bz1 ,
-bz1 >
-1S
-0#
-0;
-b1100111 2
-b1100111 Q
-1<
-#49
-bz 3
-bz 1
-bz @
-z8
-09
-0O
+bz1 G
+1\
+b1110110 @
+1.
+b10 V
+b1 `
+1#
+b1110110 %
+b1110110 _
+1D
+#24
+0D
+#25
+bz0 ,
+bz0 G
+0\
+bz :
+bz I
+zA
+0B
+0X
 0.
 b0 +
-b0 J
-b0 M
+b0 S
+b0 V
 1!
 z(
 bz /
-bz H
-bz N
+bz Q
+bz W
+bz )
+bz T
+bz Y
+b10 `
+1D
+#26
+0D
+#27
+b0 `
+0#
+1D
+#28
+0D
+#29
+1D
+#30
+0D
+#31
+1D
+#32
+0D
+#33
+1D
+#34
+0D
+#35
+1D
+#36
+0D
+#37
+1D
+#38
+0D
+#39
+1D
+#40
+0D
+#41
+1D
+#42
+b0 /
+b0 Q
 b0 W
-b1100111 -
-b1100111 B
-b1100111 R
-1;
-#50
-0;
-#51
-bz -
-bz B
-bz R
-1;
-#52
-0;
-#53
-1;
-#54
-0;
-#55
-1;
-#56
-0;
-#57
-1;
-#58
-b1100111 /
-b1100111 H
-b1100111 N
 0(
 0!
-1O
+1X
 b1 +
-b1 J
-0;
-19
-08
-b1100111 1
-b1100111 @
-b0 =
-b1000011 4
-#59
-b1000011 2
-b1000011 Q
-1#
-b1 W
+b1 S
+0D
+1B
+0A
+b0 :
+b0 I
+b1 F
+b1100111 =
+#43
+0E
 1.
-b1 M
-1;
-#60
-0;
-#61
-b10 M
-b10 W
-1;
-#62
-0;
-#63
-bz 1
-bz @
-z8
-09
-0O
-b0 W
+b10 V
+b1 `
+1#
+0$
+1D
+#44
+0D
+#45
+1D
+#46
+0D
+#47
+1D
+#48
+b1100111 -
+b1100111 K
+b1100111 [
+bz1 ,
+bz1 G
+1\
 0#
-b1000011 -
-b1000011 B
-b1000011 R
+0D
+b1100111 ;
+b1100111 Z
+1E
+#49
+bz0 ,
+bz0 G
+0\
+b1100111 <
+bz :
+bz I
+zA
+0B
+0X
 0.
 b0 +
-b0 J
-b0 M
+b0 S
+b0 V
 1!
 z(
 bz /
-bz H
-bz N
-1;
+bz Q
+bz W
+b1100111 &
+b1100111 U
+b10 `
+1D
+#50
+0D
+#51
+b0 `
+1D
+#52
+0D
+#53
+1D
+#54
+0D
+#55
+1D
+#56
+0D
+#57
+1D
+#58
+b0 /
+b0 Q
+b0 W
+0(
+0!
+1X
+b1 +
+b1 S
+0D
+1B
+0A
+b0 :
+b0 I
+b0 F
+b1110110 =
+#59
+b1110110 -
+b1110110 K
+b1110110 [
+bz1 ,
+bz1 G
+1\
+b1110110 ;
+b1110110 Z
+1.
+b10 V
+b1 `
+1#
+1D
+#60
+0D
+#61
+bz0 ,
+bz0 G
+0\
+b1110110 <
+bz :
+bz I
+zA
+0B
+0X
+0.
+b0 +
+b0 S
+b0 V
+1!
+z(
+bz /
+bz Q
+bz W
+b1110110 &
+b1110110 U
+b10 `
+1D
+#62
+0D
+#63
+b0 `
+0#
+1D
 #64
-0;
+0D
 #65
-bz -
-bz B
-bz R
-1;
+1D
 #66
-0;
+0D
 #67
-1;
+1D
 #68
-0;
+0D
 #69
-1;
+1D
 #70
-0;
+0D
 #71
-1;
+1D
 #72
-0;
+0D
 #73
-1;
+1D
 #74
-0;
+0D

@@ -50,7 +50,18 @@ wire[7:0] data_w_comp;
 
 
 
-integer test_with_wait_state;
+integer test_with_wait_state; // to indicate whether test is done with or without wait state
+
+// TEST DATA FOR EACH TEST
+parameter TEST_DATA_WRITE_WITHOUT_WW = 8'h76, TEST_DATA_WRITE_WITH_WW = 8'h67, TEST_DATA_READ_WITHOUT_WW = 8'h76, TEST_DATA_READ_WITH_WW = 8'h67;
+
+
+// 8'h00 is the only accepted address that does not raise error signal in this testbench module
+parameter TEST_ADDR_WRITE_WITHOUT_WW = 8'h00, TEST_ADDR_WRITE_WITH_WW = 8'h00, TEST_ADDR_READ_WITHOUT_WW = 8'h00, TEST_ADDR_READ_WITH_WW = 8'h00;
+
+
+// address that does not raise error in this testbench module, 
+parameter VALID_ADDR = 8'h00;	// must be valid with the requester module parameters
 
 
 
@@ -87,9 +98,20 @@ begin
 	if(test_with_wait_state==0)
 		begin
 		if(dir_comp==0)
-			data_r_comp = data_to_read;
+		begin
+			if(addr_comp!=VALID_ADDR)
+				error_comp = 1;
+			else
+				data_r_comp = data_to_read;
+
+		end
 		else
-			data_written = data_w_comp;
+		begin
+			if(addr_comp!=VALID_ADDR)
+				error_comp = 1;
+			else
+				data_written = data_w_comp;
+		end
 		end
 	else
 		begin
@@ -97,10 +119,19 @@ begin
 		#5;
 		ready_comp = 1;
 		if(dir_comp==0)
-			data_r_comp = data_to_read;
+		begin
+			if(addr_comp!=VALID_ADDR)
+				error_comp = 1;
+			else
+				data_r_comp = data_to_read;
+		end
 		else
-			data_written = data_w_comp;
-
+		begin
+			if(addr_comp!=VALID_ADDR)
+				error_comp = 1;
+			else
+				data_written = data_w_comp;
+		end
 		end
 	
 end
@@ -119,8 +150,6 @@ ready_comp = 1;
 error_comp = 0;
 
 
-data_to_read = 8'h67;
-
 data_w_req = 8'bz;
 
 data_r_comp = 8'bz;
@@ -137,44 +166,45 @@ ENABLE_DMA = 1;
 #1;
 
 
-data_to_write = 8'h67;
+data_to_write = TEST_DATA_WRITE_WITH_WW;
 // testing write operation with wait state.
 test_with_wait_state = 1;
 data_w_req = data_to_write;
-addr_req = 8'h67;
+addr_req = 8'h00;
 dir_req = 1;
 enable_req = 1;
 #16;
+error_comp = 0;
 
-
-data_to_write = 8'd67;
+data_to_write = TEST_DATA_WRITE_WITHOUT_WW;
 // testing write operation without wait state
 test_with_wait_state = 0;
 data_w_req = data_to_write;
-addr_req = 8'h67;
+addr_req = 8'h00;
 dir_req = 1;
 enable_req = 1;
 #20;
+error_comp = 0;
 
-
-data_to_read = 8'h67;
+data_to_read = TEST_DATA_READ_WITH_WW;
 // testing read operation with wait state
 test_with_wait_state = 1;
 //data_w_req = data_to_write;
-addr_req = 8'h67;
+addr_req = 8'h00;
 dir_req = 0;
 enable_req = 1;
 #16;
+error_comp = 0;
 
-data_to_read = 8'd67;
+data_to_read = TEST_DATA_READ_WITHOUT_WW;
 // testing write operation without wait state
 test_with_wait_state = 0;
 //data_w_req = data_to_write;
-addr_req = 8'h67;
+addr_req = 8'h00;
 dir_req = 0;
 enable_req = 1;
 #16;
-
+error_comp = 0;
 
 
 $finish;
