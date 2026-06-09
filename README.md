@@ -5,7 +5,7 @@ An RTL design project using verilog. It aims to model an SoC subsystem mainly in
 \
 NB : *The documentation and directories are not complete. They are updated as the project developes.*
 
-# Project progress : 30%
+# Project progress : 50%
 
 ## Table of Contents
 
