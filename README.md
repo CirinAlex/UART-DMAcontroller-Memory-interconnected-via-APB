@@ -122,6 +122,7 @@ The UART module handles the data transfer in accordance with UART protocol. The 
 - <ins>APB_completer</ins> *(PCLK, ENABLE_DMA, enable, ready, addr[7:0], data_w[7:0], data_r[7:0], dir, error, PWDATA[7:0], PRDATA[7:0], PADDR[7:0], PSEL, PWRITE, PENABLE, PREADY, PSLVERR)*
 
 To implement the interface, these two modules are instantiated and the APB bus and control signals are connected together. There must be an instantiation of the completer for each slave peripheral (In the context of this project, one instantiation for memory and one for UART). The requester must be controlled by the master (here, DMA controller).\
+
 The requester is given the operation (dir; 1=write, 0=read), data to write (data_w of requester) for write operation, address (addr) and then enabled (enable). Then the requester will perform the handshake and transfer with the completer. When transfer is complete, the data_r loaded with read data(on read operation) and the requester pulls up the ready signal. In case of error, the error signal is also pulled up.\
 
 During the transfer, in the completer side, the data_w (of completer; only on write operation) is loaded with data to write, dir (of completer) with 1 for write and 0 for read and then, enable is pulled up. If dir is 0 (read operation), the peripheral must provide the data at addr (if addr and operation is valid; if invalid, error = 1) to the completer data_r.
