@@ -210,21 +210,21 @@ To be updated
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/014339d6-e0ba-4b46-987a-da19ecbdcff5" width="500"><br>
+      <img src="https://github.com/user-attachments/assets/014339d6-e0ba-4b46-987a-da19ecbdcff5" width="500" alt="read valid"><br>
       <b>Read Operation (Valid Address)</b>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/c97a2446-eb76-4c08-a1d9-006ea6d9e7de" width="500"><br>
+      <img src="https://github.com/user-attachments/assets/c97a2446-eb76-4c08-a1d9-006ea6d9e7de" alt="write-valid" width="500"><br>
       <b>Write Operation (Valid Address)</b>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/0ea9b025-09f6-4f49-a9c9-4f0cc4439a1d" width="500"><br>
+      <img width="500" alt="write invalid" src="https://github.com/user-attachments/assets/be0756c3-ab8f-406e-b670-5d2e78fcc3e8" /><br>
       <b>Write Operation (Error Condition)</b>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/fa1e5e0d-e903-444a-8249-6b19cc25da5b" width="500"><br>
+      <img width="500" alt="read invalid" src="https://github.com/user-attachments/assets/164ccda1-4c04-45cc-bbbb-1b653c8db3c2" /><br>
       <b>Read Operation (Error Condition)</b>
     </td>
   </tr>
