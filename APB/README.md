@@ -1,5 +1,6 @@
 # APB Interface
-ARM AMBA APB version E interface implementation. Consist of a requester and completer modules. Both modules are modelled in a scalable method./
+ARM AMBA APB version E interface implementation. Consist of a requester and completer modules. Both modules are modelled in a scalable method.
+
 
 
 
