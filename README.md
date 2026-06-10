@@ -210,25 +210,24 @@ To be updated
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/014339d6-e0ba-4b46-987a-da19ecbdcff5" width="500" alt="read valid"><br>
-      <b>Read Operation (Valid Address)</b>
+      <img src="https://github.com/user-attachments/assets/8dd106de-5e15-4c0a-a990-bc71e693e04e" width="500"><br>
+      <b>Read Transaction (No Error)</b>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/c97a2446-eb76-4c08-a1d9-006ea6d9e7de" alt="write-valid" width="500"><br>
-      <b>Write Operation (Valid Address)</b>
+      <img src="https://github.com/user-attachments/assets/461cf884-1810-4722-bbc9-03db6b20c6e1" width="500"><br>
+      <b>Read Transaction (Error Response)</b>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img width="500" alt="write invalid" src="https://github.com/user-attachments/assets/be0756c3-ab8f-406e-b670-5d2e78fcc3e8" /><br>
-      <b>Write Operation (Error Condition)</b>
+      <img src="https://github.com/user-attachments/assets/beb374f2-637d-4d56-98bf-a4ff231db13d" width="500"><br>
+      <b>Write Transaction (No Error)</b>
     </td>
     <td align="center">
-      <img width="500" alt="read invalid" src="https://github.com/user-attachments/assets/164ccda1-4c04-45cc-bbbb-1b653c8db3c2" /><br>
-      <b>Read Operation (Error Condition)</b>
+      <img src="https://github.com/user-attachments/assets/7f831376-e359-4465-a2b5-93deb91d78c3" width="500"><br>
+      <b>Write Transaction (Error Response)</b>
     </td>
   </tr>
 </table>
-
 
 ## LinkedIn Series
