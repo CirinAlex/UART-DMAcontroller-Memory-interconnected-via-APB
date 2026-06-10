@@ -20,8 +20,6 @@ wire[1:0] PSLVERR;
 
 
 
-
-
 // inputs to dut1 requester
 reg[7:0] data_w_req;
 reg[7:0] addr_req;
@@ -57,11 +55,11 @@ parameter TEST_DATA_WRITE_WITHOUT_WW = 8'h76, TEST_DATA_WRITE_WITH_WW = 8'h67, T
 
 
 // 8'h00 is the only accepted address that does not raise error signal in this testbench module
-parameter TEST_ADDR_WRITE_WITHOUT_WW = 8'h00, TEST_ADDR_WRITE_WITH_WW = 8'h00, TEST_ADDR_READ_WITHOUT_WW = 8'h00, TEST_ADDR_READ_WITH_WW = 8'h00;
+parameter TEST_ADDR_WRITE_WITHOUT_WW = 8'h67, TEST_ADDR_WRITE_WITH_WW = 8'h67, TEST_ADDR_READ_WITHOUT_WW = 8'h67, TEST_ADDR_READ_WITH_WW = 8'h67;
 
 
-// address that does not raise error in this testbench module, 
-parameter VALID_ADDR = 8'h00;	// must be valid with the requester module parameters
+// address used to compare for error in this testbench module, 
+parameter VALID_ADDR = 8'h11;	// must be valid with the requester module parameters
 
 
 
@@ -133,7 +131,18 @@ begin
 				data_written = data_w_comp;
 		end
 		end
+	ready_comp <= 1;
 	
+end
+
+always @(posedge master_clk)
+begin
+	if(ready_comp==1)
+	begin
+		ready_comp <= 0;
+		error_comp <= 0;
+	end
+
 end
 
 
@@ -146,7 +155,7 @@ $dumpvars();
 
 
 
-ready_comp = 1;
+ready_comp = 0;
 error_comp = 0;
 
 

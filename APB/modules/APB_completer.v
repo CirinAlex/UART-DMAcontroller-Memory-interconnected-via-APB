@@ -1,6 +1,5 @@
 
 
-
 // APB completer module
 
 module APB_completer(
@@ -26,7 +25,7 @@ module APB_completer(
 		input reg PSEL, 	// select line for this peripheral
 		input reg PWRITE, 	// r/w control line, write=1, read=0
 		input reg PENABLE, 	// enable signal for APB r/w
-		output reg PREADY,	// ready signal		
+		output wire PREADY,	// ready signal		
 		output reg PSLVERR	// signals error when invalid addr or restricted r/w
 
 
@@ -53,10 +52,18 @@ begin
 end
 
 
+
+
+assign PREADY = ready;
+
 // enable ready complementing logic
 always @(posedge ready)
 begin
-	enable <= 0;
+	PSLVERR <= error;
+	if(PWRITE==0)
+	begin
+	PRDATA <= data_r;
+	end
 end
 
 
@@ -91,75 +98,30 @@ begin
 			end
 		
 		// SETUP state
-		2'b01 : begin // PENABLE is HIGH here, which means any bus or control signal cannot be changed
+		2'b01 : begin	// PENABLE is HIGH here, which means any bus or control signal cannot be changed
 				// this time is utilized to perform r/w to peripheral
 			
 			// goes to next state when peripheral finish the operation (ready signal)
-			if(ready==1 || error==1)
+			if(ready==1)
 				begin
-				state <= 2'b10;
-				PSLVERR <= error;
+				state <= 2'b00;
+				enable <=0;
+				data_w <= 8'bz;
+				addr <= 8'bz;
+				dir <= 1'bz;
 				end
 
 			end
-
-		// ACCESS state
-		2'b10 : begin // goes to IDLE and enable of peripheral is made LOW
+/*
+		 ACCESS state
+		2'b10 : begin goes to IDLE and enable of peripheral is made LOW
 				enable <= 0;
 				state <= 2'b00;
 			end
-
+*/
 
 	endcase
 
-end
-
-
-// logic of setting PREADY
-always @(PENABLE)
-begin
-
-if(PENABLE==0)
-	begin
-	PREADY <= 0;
-	end
-
-else
-	begin
-	if(ready==1)
-	begin
-		PREADY <= 1;
-	end
-
-	end
-
-end
-
-
-// driving PSLVERR directly using error signal from peripheral
-always @(error)
-begin
-	if(error==1)
-	PSLVERR = 1;
-
-end
-
-
-
-// PREADY always high when wait state FALSE.
-// PREADY high when ready(transfer complete) high when wait state TRUE.
-always @(ready, posedge PREADY)
-begin
-	PREADY <= ready;
-	if(ready==1)
-	begin
-
-		if(PWRITE==0)
- 		begin
-		PRDATA <= data_r;
-		end
-
-	end
 end
 
 

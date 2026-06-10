@@ -1,5 +1,5 @@
 $date
-	Tue Jun  9 16:53:57 2026
+	Wed Jun 10 11:54:31 2026
 $end
 $version
 	Icarus Verilog
@@ -77,14 +77,14 @@ $var wire 1 9 ENABLE_DMA $end
 $var wire 8 W PADDR [7:0] $end
 $var wire 1 D PCLK $end
 $var wire 1 . PENABLE $end
-$var wire 1 X PSEL $end
-$var wire 8 Y PWDATA [7:0] $end
+$var wire 1 X PREADY $end
+$var wire 1 Y PSEL $end
+$var wire 8 Z PWDATA [7:0] $end
 $var wire 1 ( PWRITE $end
-$var wire 8 Z data_r [7:0] $end
+$var wire 8 [ data_r [7:0] $end
 $var wire 1 C error $end
 $var wire 1 E ready $end
-$var reg 8 [ PRDATA [7:0] $end
-$var reg 1 \ PREADY $end
+$var reg 8 \ PRDATA [7:0] $end
 $var reg 1 ] PSLVERR $end
 $var reg 8 ^ addr [7:0] $end
 $var reg 8 _ data_w [7:0] $end
@@ -101,15 +101,15 @@ b10000000 O
 b10000001 N
 b0 M
 b1111111 L
-b0 8
+b10001 8
 b1100111 7
 b1110110 6
 b1100111 5
 b1110110 4
-b0 3
-b0 2
-b0 1
-b0 0
+b1100111 3
+b1100111 2
+b1100111 1
+b1100111 0
 $end
 #0
 $dumpvars
@@ -117,11 +117,11 @@ bx `
 bx _
 bx ^
 x]
-1\
-bx [
-bz Z
-bx Y
-xX
+bx \
+bz [
+bx Z
+xY
+0X
 bx W
 bx V
 bx U
@@ -133,9 +133,9 @@ bx K
 bz J
 bx I
 bzx H
-bz1 G
+bz0 G
 bx F
-1E
+0E
 0D
 0C
 0B
@@ -151,7 +151,7 @@ bx :
 bx /
 x.
 bx -
-bz1 ,
+bz0 ,
 bx +
 bzx *
 bx )
@@ -160,7 +160,7 @@ bx '
 bx &
 bx %
 x$
-0#
+x#
 x"
 x!
 $end
@@ -173,7 +173,7 @@ $end
 #4
 0D
 #5
-0X
+0Y
 bz &
 bz U
 0"
@@ -182,7 +182,7 @@ bz Q
 bz W
 bz )
 bz T
-bz Y
+bz Z
 z(
 b0 +
 b0 S
@@ -192,32 +192,17 @@ bz0 H
 0]
 bz -
 bz K
-bz [
+bz \
 z$
 bz %
 bz _
 bz '
 bz ^
+0#
 b0 `
 1D
 19
 #6
-bz0 ,
-bz0 G
-0\
-0.
-b0 /
-b0 Q
-b0 W
-b1100111 )
-b1100111 T
-b1100111 Y
-1(
-0!
-1X
-0R
-b1 +
-b1 S
 0D
 1B
 1A
@@ -228,9 +213,30 @@ b1100111 J
 b1 F
 b1100111 >
 #7
-0E
-1.
+b1 V
+1D
+#8
+0D
+#9
 b10 V
+0.
+b0 /
+b0 Q
+b0 W
+b1100111 )
+b1100111 T
+b1100111 Z
+1(
+0!
+1Y
+0R
+b1 +
+b1 S
+1D
+#10
+0D
+#11
+1.
 b1 `
 1#
 b1100111 %
@@ -239,74 +245,68 @@ b1100111 _
 b0 '
 b0 ^
 1D
-#8
-0D
-#9
-1D
-#10
-0D
-#11
-1D
 #12
-bz1 ,
-bz1 G
-1\
-0#
 0D
-b1100111 @
-1E
 #13
-bz0 ,
-bz0 G
-0\
-bz :
-bz I
-zA
-0B
-0X
-0.
-b0 +
-b0 S
-b0 V
-1!
-z(
-bz /
-bz Q
-bz W
-bz )
-bz T
-bz Y
-b10 `
 1D
 #14
 0D
 #15
-b0 `
 1D
 #16
+bz1 *
+bz1 H
+1]
 0D
+1C
+bz1 ,
+bz1 G
+1X
+1E
 #17
+bz :
+bz I
+zA
+0B
+0Y
+z(
+bz )
+bz T
+bz Z
+bz /
+bz Q
+bz W
+1"
+1!
+0.
+b0 +
+b0 S
+b0 V
+z$
+bz '
+bz ^
+bz %
+bz _
+0#
+b0 `
+0C
+bz0 ,
+bz0 G
+0X
+0E
 1D
 #18
 0D
 #19
+bz0 *
+bz0 H
+0]
 1D
 #20
 0D
 #21
 1D
 #22
-b0 /
-b0 Q
-b0 W
-b1110110 )
-b1110110 T
-b1110110 Y
-1(
-0!
-1X
-b1 +
-b1 S
 0D
 1B
 1A
@@ -317,55 +317,85 @@ b1110110 J
 b0 F
 b1110110 >
 #23
-bz1 ,
-bz1 G
-1\
-b1110110 @
-1.
-b10 V
-b1 `
-1#
-b1110110 %
-b1110110 _
+b1 V
 1D
 #24
 0D
 #25
-bz0 ,
-bz0 G
-0\
-bz :
-bz I
-zA
-0B
-0X
-0.
-b0 +
-b0 S
-b0 V
-1!
-z(
-bz /
-bz Q
-bz W
-bz )
-bz T
-bz Y
-b10 `
+b10 V
+b0 /
+b0 Q
+b0 W
+b1110110 )
+b1110110 T
+b1110110 Z
+1(
+0!
+0"
+1Y
+b1 +
+b1 S
 1D
 #26
 0D
 #27
-b0 `
-0#
+bz1 *
+bz1 H
+1]
+bz1 ,
+bz1 G
+1X
+1E
+1C
+1.
+b1 `
+1#
+b1110110 %
+b1110110 _
+1$
+b0 '
+b0 ^
 1D
 #28
 0D
 #29
+bz :
+bz I
+zA
+0B
+0Y
+z(
+bz )
+bz T
+bz Z
+bz /
+bz Q
+bz W
+1"
+1!
+0.
+b0 +
+b0 S
+b0 V
+z$
+bz '
+bz ^
+bz %
+bz _
+0#
+b0 `
+0C
+bz0 ,
+bz0 G
+0X
+0E
 1D
 #30
 0D
 #31
+bz0 *
+bz0 H
+0]
 1D
 #32
 0D
@@ -388,14 +418,6 @@ b0 `
 #41
 1D
 #42
-b0 /
-b0 Q
-b0 W
-0(
-0!
-1X
-b1 +
-b1 S
 0D
 1B
 0A
@@ -404,82 +426,90 @@ b0 I
 b1 F
 b1100111 =
 #43
-0E
-1.
-b10 V
-b1 `
-1#
-0$
+b1 V
 1D
 #44
 0D
 #45
+b10 V
+b0 /
+b0 Q
+b0 W
+0(
+0!
+0"
+1Y
+b1 +
+b1 S
 1D
 #46
 0D
 #47
+1.
+b1 `
+1#
+0$
+b0 '
+b0 ^
 1D
 #48
-b1100111 -
-b1100111 K
-b1100111 [
-bz1 ,
-bz1 G
-1\
-0#
 0D
-b1100111 ;
-b1100111 Z
-1E
 #49
-bz0 ,
-bz0 G
-0\
-b1100111 <
-bz :
-bz I
-zA
-0B
-0X
-0.
-b0 +
-b0 S
-b0 V
-1!
-z(
-bz /
-bz Q
-bz W
-b1100111 &
-b1100111 U
-b10 `
 1D
 #50
 0D
 #51
-b0 `
 1D
 #52
+bz1 *
+bz1 H
+1]
 0D
+1C
+bz1 ,
+bz1 G
+1X
+1E
 #53
+bz <
+bz :
+bz I
+zA
+0B
+0Y
+z(
+bz /
+bz Q
+bz W
+1"
+1!
+0.
+b0 +
+b0 S
+b0 V
+z$
+bz '
+bz ^
+0#
+b0 `
+0C
+bz0 ,
+bz0 G
+0X
+0E
 1D
 #54
 0D
 #55
+bz0 *
+bz0 H
+0]
 1D
 #56
 0D
 #57
 1D
 #58
-b0 /
-b0 Q
-b0 W
-0(
-0!
-1X
-b1 +
-b1 S
 0D
 1B
 0A
@@ -488,57 +518,75 @@ b0 I
 b0 F
 b1110110 =
 #59
-b1110110 -
-b1110110 K
-b1110110 [
-bz1 ,
-bz1 G
-1\
-b1110110 ;
-b1110110 Z
-1.
-b10 V
-b1 `
-1#
+b1 V
 1D
 #60
 0D
 #61
-bz0 ,
-bz0 G
-0\
-b1110110 <
-bz :
-bz I
-zA
-0B
-0X
-0.
-b0 +
-b0 S
-b0 V
-1!
-z(
-bz /
-bz Q
-bz W
-b1110110 &
-b1110110 U
-b10 `
+b10 V
+b0 /
+b0 Q
+b0 W
+0(
+0!
+0"
+1Y
+b1 +
+b1 S
 1D
 #62
 0D
 #63
-b0 `
-0#
+bz1 *
+bz1 H
+1]
+bz1 ,
+bz1 G
+1X
+1E
+1C
+1.
+b1 `
+1#
+0$
+b0 '
+b0 ^
 1D
 #64
 0D
 #65
+bz :
+bz I
+zA
+0B
+0Y
+z(
+bz /
+bz Q
+bz W
+1"
+1!
+0.
+b0 +
+b0 S
+b0 V
+z$
+bz '
+bz ^
+0#
+b0 `
+0C
+bz0 ,
+bz0 G
+0X
+0E
 1D
 #66
 0D
 #67
+bz0 *
+bz0 H
+0]
 1D
 #68
 0D

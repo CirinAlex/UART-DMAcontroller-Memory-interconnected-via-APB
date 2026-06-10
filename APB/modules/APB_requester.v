@@ -52,8 +52,7 @@ begin
 	data_r <= 8'bz;
 end
 
-
-// On positive edge of enable, ready pulled LOW, PWRITE initialized, data_x written to the PXDATA, addr written to PADDR
+/*
 always @(posedge enable)
 begin
 	error <= 0;
@@ -68,9 +67,9 @@ begin
 	PENABLE <= 0;
 
 end
+*/
+/*
 
-
-// On posedge of enable, drive PSELx to HIGH based on the addr, ie. address to PSEL mapping and initializing PERIPHERAL_INDEX to be used as index in the FSM.
 always @(posedge enable)
 begin
 	if(addr[WIDTH:0] >= MEMORY_STRT_ADDR && addr[WIDTH:0] <= MEMORY_END_ADDR)
@@ -84,11 +83,11 @@ begin
 		PSEL[1] = 1;
 		PERIPHERAL_INDEX = 1'b1;
 	end
-	/*else
+	else
 		error <= 1;
-		ready <= 1;*/
+		ready <= 1;
 end
-
+*/
 
 
 // FSM
@@ -98,24 +97,50 @@ begin
 	case(state)
 		// IDLE
 		2'b00 : begin
-			// goes to next state on PSEL and PENABLE pulled HIGH
-			if(PSEL[1:0] != 2'b00)
+			// goes to next state when transfer is initiated
+			if(enable)
 				begin
 				state <= 2'b01;
-				PENABLE <= 1;
 				end
 			end
 
-		// SETUP
-		// gives requester the time to complete the data transfer
+		// SETUP declare PSEL
 		2'b01 : begin
+			if(addr[WIDTH:0] >= MEMORY_STRT_ADDR && addr[WIDTH:0] <= MEMORY_END_ADDR)
+				begin
+				PSEL[0] = 1;
+				PERIPHERAL_INDEX = 1'b0;
+				end
+
+			else if(addr == UART_RX_ADDR || addr == UART_TX_ADDR)
+				begin
+				PSEL[1] = 1;
+				PERIPHERAL_INDEX = 1'b1;
+				end
+			/*else
+				begin
+				error <= 1;
+				ready <= 1;
+				end
+			*/
+			error <= 0;
+			ready <= 0;
+			PWRITE <= dir; 	// setting PWRITE
+		
+			// setting data bus according to dir input by master peripheral.
+			case(dir)
+				1 : PWDATA <= data_w;
+			endcase
+			PADDR <= addr;
+			PENABLE <= 0;
 			state <= 2'b10;
+
 			end
 
 		// ACCESS
 		// transfer complete and requester pulls up PREADY and PSLVERR(if address or operation on an address is invalid) to indicate this
 		2'b10 : begin
-
+			PENABLE <= 1;
 			// for optional wait state
 			if(PREADY[PERIPHERAL_INDEX]==1)
 				begin
