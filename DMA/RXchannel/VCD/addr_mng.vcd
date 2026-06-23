@@ -1,0 +1,398 @@
+$date
+	Wed Jun 17 21:17:24 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module addr_mng_tb $end
+$var wire 1 ! half_buffer $end
+$var wire 1 " full_buffer $end
+$var wire 8 # addr [7:0] $end
+$var reg 1 $ enable $end
+$var reg 1 % enable_DMA $end
+$var reg 1 & full_buffer_in $end
+$var reg 1 ' half_buffer_in $end
+$var reg 8 ( memory_buffer_offset [7:0] $end
+$var reg 8 ) memory_start_address [7:0] $end
+$var reg 1 * rw $end
+$scope module uut $end
+$var wire 1 $ enable $end
+$var wire 1 % enable_DMA $end
+$var wire 1 & full_buffer_in $end
+$var wire 1 ' half_buffer_in $end
+$var wire 8 + memory_buffer_offset [7:0] $end
+$var wire 8 , memory_start_address [7:0] $end
+$var wire 1 * rw $end
+$var parameter 8 - peripheral_addr $end
+$var reg 8 . addr [7:0] $end
+$var reg 8 / current_addr [7:0] $end
+$var reg 1 " full_buffer $end
+$var reg 1 ! half_buffer $end
+$var reg 8 0 offset [7:0] $end
+$var reg 8 1 origin_addr [7:0] $end
+$upscope $end
+$scope begin $ivl_for_loop0 $end
+$var integer 32 2 i [31:0] $end
+$upscope $end
+$scope begin $ivl_for_loop1 $end
+$var integer 32 3 i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10000001 -
+$end
+#0
+$dumpvars
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+bx ,
+bx +
+x*
+bx )
+bx (
+x'
+x&
+0%
+x$
+bx #
+x"
+x!
+$end
+#1
+b10000 /
+b1000 0
+b10000 1
+0"
+0!
+b1000 (
+b1000 +
+b10000 )
+b10000 ,
+1&
+1'
+1%
+#9
+0$
+#17
+b10001 /
+b10001 #
+b10001 .
+1$
+0*
+b0 2
+#19
+0$
+#21
+b10000001 #
+b10000001 .
+1$
+1*
+#23
+0$
+#25
+b10010 /
+b10010 #
+b10010 .
+1$
+0*
+b1 2
+#27
+0$
+#29
+b10000001 #
+b10000001 .
+1$
+1*
+#31
+0$
+#33
+b10011 /
+b10011 #
+b10011 .
+1$
+0*
+b10 2
+#35
+0$
+#37
+b10000001 #
+b10000001 .
+1$
+1*
+#39
+0$
+#41
+b10100 /
+b10100 #
+b10100 .
+1$
+0*
+b11 2
+#43
+0$
+#45
+1!
+b10000001 #
+b10000001 .
+1$
+1*
+#47
+0$
+#49
+b10101 /
+b10101 #
+b10101 .
+1$
+0*
+b100 2
+#51
+0$
+#53
+b10000001 #
+b10000001 .
+1$
+1*
+#55
+0$
+#57
+b10110 /
+b10110 #
+b10110 .
+1$
+0*
+b101 2
+#59
+0$
+#61
+b10000001 #
+b10000001 .
+1$
+1*
+#63
+0$
+#65
+b10111 /
+b10111 #
+b10111 .
+1$
+0*
+b110 2
+#67
+0$
+#69
+b10000001 #
+b10000001 .
+1$
+1*
+#71
+0$
+#73
+b11000 /
+b11000 #
+b11000 .
+1$
+0*
+b111 2
+#75
+0$
+#77
+1"
+b10000001 #
+b10000001 .
+1$
+1*
+#79
+0$
+#81
+1$
+0*
+b1000 2
+#83
+0$
+#85
+1$
+1*
+#87
+0$
+#89
+1$
+0*
+b1001 2
+#91
+0$
+#93
+1$
+1*
+#95
+0$
+#97
+b1010 2
+#102
+b10000 /
+0"
+0!
+0&
+#107
+b10001 /
+b10001 #
+b10001 .
+1$
+0*
+b0 3
+#109
+0$
+#111
+b10000001 #
+b10000001 .
+1$
+1*
+#113
+0$
+#115
+b10010 /
+b10010 #
+b10010 .
+1$
+0*
+b1 3
+#117
+0$
+#119
+b10000001 #
+b10000001 .
+1$
+1*
+#121
+0$
+#123
+b10011 /
+b10011 #
+b10011 .
+1$
+0*
+b10 3
+#125
+0$
+#127
+b10000001 #
+b10000001 .
+1$
+1*
+#129
+0$
+#131
+b10100 /
+b10100 #
+b10100 .
+1$
+0*
+b11 3
+#133
+0$
+#135
+1!
+b10000001 #
+b10000001 .
+1$
+1*
+#137
+0$
+#139
+b10101 /
+b10101 #
+b10101 .
+1$
+0*
+b100 3
+#141
+0$
+#143
+b10000001 #
+b10000001 .
+1$
+1*
+#145
+0$
+#147
+b10110 /
+b10110 #
+b10110 .
+1$
+0*
+b101 3
+#149
+0$
+#151
+b10000001 #
+b10000001 .
+1$
+1*
+#153
+0$
+#155
+b10111 /
+b10111 #
+b10111 .
+1$
+0*
+b110 3
+#157
+0$
+#159
+b10000001 #
+b10000001 .
+1$
+1*
+#161
+0$
+#163
+b11000 /
+b11000 #
+b11000 .
+1$
+0*
+b111 3
+#165
+0$
+#167
+1"
+b10000001 #
+b10000001 .
+1$
+1*
+#169
+0$
+#171
+1$
+0*
+b1000 3
+#173
+0$
+#175
+1$
+1*
+#177
+0$
+#179
+1$
+0*
+b1001 3
+#181
+0$
+#183
+1$
+1*
+#185
+0$
+#187
+b1010 3
+#195
