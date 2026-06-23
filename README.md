@@ -128,10 +128,9 @@ The requester is given the operation (dir; 1=write, 0=read), data to write (data
 During the transfer, in the completer side, the data_w (of completer; only on write operation) is loaded with data to write, dir (of completer) with 1 for write and 0 for read and then, enable is pulled up. If dir is 0 (read operation), the peripheral must provide the data at addr (if addr and operation is valid; if invalid, error = 1) to the completer data_r.
 
 ### DMA Controller
-This is a dual channel DMA controller hardwired for RX and TX of UART. One channel for RX and other for TX. The top module of DMA controller handles the bus
-multiplexing of APB bus for the channels through fixed priority based arbitration. It raises the error interrupt to external system if any channel recieves it. Each channel has two registers, memory_buff_strt_addr and memory_buff_offset. These are configurable registers that store the start address and size of the memory buffer allocated for each channels respectively.
+This is a dual channel circular mode DMA controller hardwired for RX and TX of UART. One channel for RX and other for TX. The top module of DMA controller handles the bus multiplexing of APB bus for the channels through fixed priority based arbitration. It raises the error interrupt to external system if any channel recieves it. Each channel has two registers, memory_buff_strt_addr and memory_buff_offset. These are configurable registers that store the start address and size of the memory buffer allocated for each channels respectively.
 #### DMA channel
-The DMA channel handles the data transfer between peripheral(UART) and memory on each interrupt (RI/TI). 
+The DMA channel handles the data transfer between peripheral(UART) and memory on each interrupt (RI/TI). Each channel has an 8 state FSM. The external system first need to configure the memory_buff_strt_addr and memory_buff_offset, then enable the DMA. The DMA channel will give an interrupt when memory buffer is half, and another interrupt when memory buffer is full. When the memory buffer is full, the FSM enters a waiting to configure state. The external system can either disable the DMA and then reconfigure the registers or just disable and enable the DMA to resume the transfers.
 ### Memory
 To be updated
 
