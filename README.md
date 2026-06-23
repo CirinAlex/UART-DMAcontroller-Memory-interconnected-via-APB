@@ -138,66 +138,83 @@ To be updated
 UART-DMAcontroller-Memory-pipelined-with-APB/
 │   .gitignore
 │   README.md
-├───APB
-│   │   
+│
+├───APB/
 │   │   README.md
 │   │
-│   ├───modules
+│   ├───modules/
 │   │       APB_completer.v
 │   │       APB_requester.v
 │   │
-│   ├───testbenches
+│   ├───testbenches/
 │   │       APB_requester_tb.v
 │   │       APB_req_comp_tb.v
 │   │
-│   └───VCD
+│   └───VCD/
 │           APB.vcd
 │           APB_requester.vcd
 │
-└───UART
+├───DMA/
+│   │   README.md
+│   │
+│   └───RXchannel/
+│       │   README.md
+│       │
+│       ├───modules/
+│       │       addr_mng_RX.v
+│       │       DMAchannelRX.v
+│       │
+│       ├───testbenches/
+│       │       addr_mng_tb.v
+│       │       DMAchannelRX_tb.v
+│       │
+│       └───VCD/
+│               addr_mng.vcd
+│               DMARX.vcd
+│
+└───UART/
     │   README.md
-    │   uart.vcd
-    │   uart_out
     │
-    ├───modules
+    ├───modules/
     │   │   clk_divider.v
     │   │   README.md
     │   │   UARTtop.v
     │   │   uart_timer.v
     │   │
-    │   ├───RX
+    │   ├───RX/
     │   │       RXshift.v
     │   │       RXtop.v
     │   │
-    │   └───TX
+    │   └───TX/
     │           TXshift.v
     │           TXtop.v
     │
-    ├───testbenches
+    ├───testbenches/
     │   │   clk_divider_tb.v
     │   │   UART_tb.v
     │   │   uart_timer_tb.v
     │   │
-    │   ├───RX
+    │   ├───RX/
     │   │       RXshift_tb.v
     │   │       RXtop_tb.v
     │   │
-    │   └───TX
+    │   └───TX/
     │           TXshift_tb.v
     │           TXtop_tb.v
     │
-    └───VCD
+    └───VCD/
         │   clk_divider.vcd
         │   uart.vcd
         │   uart_timer.vcd
         │
-        ├───RX
+        ├───RX/
         │       RXshift.vcd
         │       RXtop.vcd
         │
-        └───TX
+        └───TX/
                 TXshift.vcd
                 TXtop.vcd
+
 ```
 ## Verification
 To be updated
