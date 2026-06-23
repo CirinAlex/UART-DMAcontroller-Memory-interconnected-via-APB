@@ -254,6 +254,10 @@ To be updated
 #### DMA RX channel
 <img width="1334" height="761" alt="Screenshot 2026-06-23 181521" src="https://github.com/user-attachments/assets/476ea867-f9b7-404b-9c4a-6b7471c94881" />
 
+#### DMA TX channel
+<img width="1368" height="750" alt="Screenshot 2026-06-23 220416" src="https://github.com/user-attachments/assets/ce30de7b-d445-4646-b59f-195540e5d06b" />
+
+
 
 
 ## LinkedIn Series
