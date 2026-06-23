@@ -129,8 +129,9 @@ During the transfer, in the completer side, the data_w (of completer; only on wr
 
 ### DMA Controller
 This is a dual channel DMA controller hardwired for RX and TX of UART. One channel for RX and other for TX. The top module of DMA controller handles the bus
-multiplexing of APB bus for the channels through fixed priority based arbitration. Each channel has two registers, memory_start_address and memory_buffer_offset.
+multiplexing of APB bus for the channels through fixed priority based arbitration. It raises the error interrupt to external system if any channel recieves it. Each channel has two registers, memory_buff_strt_addr and memory_buff_offset. These are configurable registers that store the start address and size of the memory buffer allocated for each channels respectively.
 #### DMA channel
+The DMA channel handles the data transfer between peripheral(UART) and memory on each interrupt (RI/TI). 
 ### Memory
 To be updated
 
@@ -248,5 +249,11 @@ To be updated
     </td>
   </tr>
 </table>
+
+### DMA controller
+#### DMA RX channel
+<img width="1334" height="761" alt="Screenshot 2026-06-23 181521" src="https://github.com/user-attachments/assets/476ea867-f9b7-404b-9c4a-6b7471c94881" />
+
+
 
 ## LinkedIn Series
