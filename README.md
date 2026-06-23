@@ -128,7 +128,9 @@ The requester is given the operation (dir; 1=write, 0=read), data to write (data
 During the transfer, in the completer side, the data_w (of completer; only on write operation) is loaded with data to write, dir (of completer) with 1 for write and 0 for read and then, enable is pulled up. If dir is 0 (read operation), the peripheral must provide the data at addr (if addr and operation is valid; if invalid, error = 1) to the completer data_r.
 
 ### DMA Controller
-To be updated
+This is a dual channel DMA controller hardwired for RX and TX of UART. One channel for RX and other for TX. The top module of DMA controller handles the bus
+multiplexing of APB bus for the channels through fixed priority based arbitration. Each channel has two registers, memory_start_address and memory_buffer_offset.
+#### DMA channel
 ### Memory
 To be updated
 
