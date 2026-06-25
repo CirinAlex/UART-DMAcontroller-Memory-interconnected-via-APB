@@ -1,0 +1,558 @@
+$date
+	Thu Jun 25 11:39:09 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module DMAchannelRX_tb $end
+$var wire 1 ! half_buffer $end
+$var wire 1 " full_buffer $end
+$var wire 1 # error_reg $end
+$var wire 1 $ enable_transfer $end
+$var wire 1 % dir_transfer $end
+$var wire 8 & data_w [7:0] $end
+$var wire 8 ' addr_transfer_out [7:0] $end
+$var wire 1 ( RI_in $end
+$var wire 1 ) BUS_request $end
+$var reg 1 * BUS_grant $end
+$var reg 1 + RI $end
+$var reg 8 , data_r [7:0] $end
+$var reg 1 - enable_DMA $end
+$var reg 1 . error $end
+$var reg 1 / full_buffer_in $end
+$var reg 1 0 half_buffer_in $end
+$var reg 1 1 master_clk $end
+$var reg 8 2 mem1 [7:0] $end
+$var reg 8 3 mem2 [7:0] $end
+$var reg 8 4 mem3 [7:0] $end
+$var reg 8 5 mem4 [7:0] $end
+$var reg 8 6 memory_buffer_offset [7:0] $end
+$var reg 8 7 memory_start_address [7:0] $end
+$var reg 1 8 ready_transfer $end
+$scope module UUT $end
+$var wire 1 * BUS_grant $end
+$var wire 1 + RI $end
+$var wire 8 9 addr_transfer_out [7:0] $end
+$var wire 8 : data_r [7:0] $end
+$var wire 1 - enable_DMA $end
+$var wire 1 . error $end
+$var wire 1 / full_buffer_in $end
+$var wire 1 0 half_buffer_in $end
+$var wire 1 1 master_clk $end
+$var wire 8 ; memory_buffer_offset [7:0] $end
+$var wire 8 < memory_start_address [7:0] $end
+$var wire 1 8 ready_transfer $end
+$var wire 1 = half_buffer_internal $end
+$var wire 1 > full_buffer_internal $end
+$var wire 8 ? addr_transfer_internal [7:0] $end
+$var reg 1 ) BUS_request $end
+$var reg 8 @ DATA [7:0] $end
+$var reg 1 ( RI_in $end
+$var reg 8 A data_w [7:0] $end
+$var reg 1 % dir_transfer $end
+$var reg 1 B enable_addr_mng $end
+$var reg 1 $ enable_transfer $end
+$var reg 1 # error_reg $end
+$var reg 1 " full_buffer $end
+$var reg 1 ! half_buffer $end
+$var reg 1 C rst_fb $end
+$var reg 1 D rst_hb $end
+$var reg 3 E state [2:0] $end
+$scope module uut $end
+$var wire 1 B enable $end
+$var wire 1 - enable_DMA $end
+$var wire 8 F memory_buffer_offset [7:0] $end
+$var wire 8 G memory_start_address [7:0] $end
+$var wire 1 C rst_fb $end
+$var wire 1 D rst_hb $end
+$var wire 1 % rw $end
+$var parameter 8 H peripheral_addr $end
+$var reg 8 I addr [7:0] $end
+$var reg 8 J current_addr [7:0] $end
+$var reg 1 > full_buffer $end
+$var reg 1 = half_buffer $end
+$var reg 8 K offset [7:0] $end
+$var reg 8 L origin_addr [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10000001 H
+$end
+#0
+$dumpvars
+bx L
+bx K
+bx J
+bx I
+bx G
+bx F
+bx E
+xD
+xC
+xB
+bx A
+bx @
+bx ?
+x>
+x=
+bx <
+bx ;
+bx :
+bx 9
+18
+bx 7
+bx 6
+bx 5
+bx 4
+bx 3
+bx 2
+01
+x0
+x/
+x.
+x-
+bx ,
+0+
+0*
+x)
+x(
+bx '
+bx &
+x%
+x$
+x#
+x"
+x!
+$end
+#1
+11
+#2
+01
+#3
+0"
+0!
+b0 E
+b1000000 J
+b10 K
+b1000000 L
+11
+b10 6
+b10 ;
+b10 F
+b1000000 7
+b1000000 <
+b1000000 G
+0-
+#4
+0>
+0=
+1(
+1C
+1D
+0B
+0)
+0$
+0#
+01
+1-
+#5
+b1 E
+11
+#6
+01
+#7
+11
+#8
+01
+1+
+#9
+b10 E
+11
+#10
+01
+#11
+b10000001 '
+b10000001 9
+b10000001 ?
+b10000001 I
+b11 E
+1)
+1B
+1%
+11
+#12
+01
+#13
+0B
+11
+#14
+01
+#15
+11
+#16
+01
+1*
+#17
+08
+1$
+11
+#18
+01
+#19
+11
+#20
+01
+#21
+11
+b10101010 ,
+b10101010 :
+#22
+01
+#23
+11
+#24
+01
+#25
+11
+#26
+01
+#27
+11
+#28
+01
+18
+#29
+b100 E
+b10101010 @
+0$
+11
+#30
+01
+#31
+1=
+b1000001 J
+b1000000 '
+b1000000 9
+b1000000 ?
+b1000000 I
+b101 E
+1B
+0%
+11
+#32
+01
+#33
+08
+1$
+b10101010 &
+b10101010 A
+0B
+11
+#34
+01
+#35
+11
+#36
+01
+#37
+11
+b10101010 2
+#38
+01
+#39
+11
+#40
+01
+#41
+11
+#42
+01
+#43
+11
+#44
+01
+18
+#45
+b110 E
+0$
+0(
+11
+#46
+01
+#47
+0*
+b1 E
+1!
+0)
+11
+#48
+01
+#49
+b10 E
+11
+#50
+01
+#51
+b10000001 '
+b10000001 9
+b10000001 ?
+b10000001 I
+b11 E
+1)
+1B
+1%
+11
+#52
+01
+#53
+0B
+11
+#54
+01
+#55
+11
+#56
+01
+1*
+#57
+08
+1$
+11
+#58
+01
+#59
+11
+#60
+01
+#61
+11
+#62
+01
+#63
+11
+#64
+01
+#65
+11
+#66
+01
+#67
+11
+#68
+01
+18
+#69
+b100 E
+0$
+11
+#70
+01
+#71
+1>
+b1000010 J
+b1000001 '
+b1000001 9
+b1000001 ?
+b1000001 I
+b101 E
+1B
+0%
+11
+#72
+01
+#73
+08
+1$
+0B
+11
+#74
+01
+#75
+11
+#76
+01
+#77
+11
+b10101010 3
+#78
+01
+#79
+11
+#80
+01
+#81
+11
+#82
+01
+#83
+11
+#84
+01
+18
+#85
+b110 E
+0$
+11
+#86
+01
+#87
+0*
+b111 E
+1"
+0)
+11
+#88
+01
+#89
+11
+#90
+01
+#91
+11
+#92
+01
+#93
+11
+#94
+01
+#95
+11
+#96
+01
+#97
+11
+#98
+01
+#99
+11
+#100
+01
+#101
+11
+#102
+01
+#103
+11
+#104
+01
+#105
+11
+#106
+01
+#107
+11
+#108
+01
+#109
+11
+#110
+01
+#111
+11
+#112
+01
+#113
+11
+#114
+01
+#115
+11
+#116
+01
+#117
+11
+#118
+01
+#119
+11
+#120
+01
+#121
+11
+#122
+01
+#123
+11
+#124
+01
+#125
+11
+#126
+01
+#127
+11
+#128
+0"
+0!
+b0 E
+01
+0-
+#129
+11
+#130
+b1000000 J
+0>
+0=
+1(
+01
+1-
+#131
+b1 E
+11
+#132
+01
+#133
+b10 E
+11
+#134
+01
+#135
+b10000001 '
+b10000001 9
+b10000001 ?
+b10000001 I
+b11 E
+1)
+1B
+1%
+11
+#136
+01
+#137
+0B
+11
+#138
+01
+#139
+11
+#140
+01
+1*
+#141
+08
+1$
+11
+#142
+01
+#143
+11
+#144
+01
+#145
+11
+#146
+01
+#147
+11
+#148
+01
+#149
+11
+#150
+01

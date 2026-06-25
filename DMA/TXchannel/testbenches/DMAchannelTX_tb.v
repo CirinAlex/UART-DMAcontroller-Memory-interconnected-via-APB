@@ -13,7 +13,7 @@ reg[7:0] mem1;
 reg[7:0] mem2;
 reg[7:0] mem3;
 reg[7:0] mem4;
-reg[7:0] RXbuff;
+reg[7:0] TXbuff;
 
 reg master_clk;
 reg enable_DMA;
@@ -61,6 +61,13 @@ enable_DMA = 0;
 memory_start_address = 8'h40;
 memory_buffer_offset = 8'd4;
 
+
+mem1 = 8'b10101110;
+mem2 = 8'b10001010;
+mem3 = 8'b00101010;
+mem4 = 8'b10111110;
+
+
 #1;
 enable_DMA = 1;
 #4;
@@ -103,7 +110,7 @@ case(addr_transfer_out)
 8'h82 : begin
 	if(dir_transfer==0)
 	begin
-		RXbuff = data_w;
+		TXbuff = data_w;
 	end
 	else
 	begin
@@ -114,7 +121,7 @@ case(addr_transfer_out)
 8'h40 : begin
 	if(dir_transfer==1)
 	begin
-		data_r = 8'b10101110;
+		data_r = mem1; //8'b10101110;
 	end
 	else
 	begin
@@ -125,7 +132,7 @@ case(addr_transfer_out)
 8'h41 : begin
 	if(dir_transfer==1)
 	begin
-		data_r = 8'b10001010;
+		data_r = mem2; //8'b10001010;
 	end
 	else
 	begin
@@ -136,7 +143,7 @@ case(addr_transfer_out)
 8'h42 : begin
 	if(dir_transfer==1)
 	begin
-		data_r = 8'b00101010;
+		data_r = mem3; //8'b00101010;
 	end
 	else
 	begin
@@ -147,7 +154,7 @@ case(addr_transfer_out)
 8'h43 : begin
 	if(dir_transfer==1)
 	begin
-		data_r = 8'b10111110;
+		data_r = mem4; //8'b10111110;
 	end
 	else
 	begin
@@ -169,10 +176,10 @@ end
 
 
 
-always @(negedge enable_transfer)
+always @(negedge BUS_request)
 begin
 
-if(enable_transfer==0)
+if(BUS_request==0)
 begin
 	BUS_grant = 0;
 end

@@ -81,6 +81,7 @@ begin
 case(state)
 	// IDLE
 	3'b000 : begin
+		BUS_request <= 0;
 		if(enable_DMA==1 && error_reg!= 1)
 		begin
 			state <= 3'b001;
@@ -118,13 +119,13 @@ case(state)
 		// transfer
 		if(BUS_grant==1 && ready_transfer==1 && enable_transfer==0)
 		begin
-		//BUS_request <= 0;
+
 		enable_transfer <= 1;
 		end
 
 		if(BUS_grant==1 && ready_transfer==1 && enable_transfer==1)
 		begin
-		BUS_request <= 0;
+
 		if(error==1)
 		begin
 			error_reg <= 1;
@@ -150,7 +151,7 @@ case(state)
 		dir_transfer <= 0;	// inputs to the addr_mng, also acts as control signal to the BUS
 		enable_addr_mng <= 1;	// enables addr_mng
 
-		BUS_request <= 1;
+
 
 		state <= 3'b101;
 
@@ -165,14 +166,14 @@ case(state)
 		// transfer
 		if(BUS_grant==1 && ready_transfer==1 && enable_transfer==0)
 		begin
-		//BUS_request <= 0;
+
 		data_w <= DATA;
 		enable_transfer <= 1;
 		end
 
 		if(BUS_grant==1 && ready_transfer==1 && enable_transfer==1)
 		begin
-		BUS_request <= 0;
+
 		if(error==1)
 		begin
 			error_reg <= 1;
@@ -192,7 +193,9 @@ case(state)
 
 	// CHECK for half or full buffer interrupt, passes the interrupt and goes to WAIT_CONFIG state if true.
 	3'b110 : begin
-		
+	
+		BUS_request <= 0;
+
 		if(half_buffer_internal==1)
 		begin
 		half_buffer <= 1;

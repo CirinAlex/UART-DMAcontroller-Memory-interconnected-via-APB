@@ -1,0 +1,810 @@
+$date
+	Thu Jun 25 09:05:14 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module DMAchannelRX_tb $end
+$var wire 1 ! half_buffer $end
+$var wire 1 " full_buffer $end
+$var wire 1 # error_reg $end
+$var wire 1 $ enable_transfer $end
+$var wire 1 % dir_transfer $end
+$var wire 8 & data_w [7:0] $end
+$var wire 8 ' addr_transfer_out [7:0] $end
+$var wire 1 ( TI_in $end
+$var wire 1 ) BUS_request $end
+$var reg 1 * BUS_grant $end
+$var reg 1 + TI $end
+$var reg 8 , TXbuff [7:0] $end
+$var reg 8 - data_r [7:0] $end
+$var reg 1 . enable_DMA $end
+$var reg 1 / error $end
+$var reg 1 0 full_buffer_in $end
+$var reg 1 1 half_buffer_in $end
+$var reg 1 2 master_clk $end
+$var reg 8 3 mem1 [7:0] $end
+$var reg 8 4 mem2 [7:0] $end
+$var reg 8 5 mem3 [7:0] $end
+$var reg 8 6 mem4 [7:0] $end
+$var reg 8 7 memory_buffer_offset [7:0] $end
+$var reg 8 8 memory_start_address [7:0] $end
+$var reg 1 9 ready_transfer $end
+$scope module UUT $end
+$var wire 1 * BUS_grant $end
+$var wire 1 + TI $end
+$var wire 8 : addr_transfer_out [7:0] $end
+$var wire 8 ; data_r [7:0] $end
+$var wire 1 . enable_DMA $end
+$var wire 1 / error $end
+$var wire 1 0 full_buffer_in $end
+$var wire 1 1 half_buffer_in $end
+$var wire 1 2 master_clk $end
+$var wire 8 < memory_buffer_offset [7:0] $end
+$var wire 8 = memory_start_address [7:0] $end
+$var wire 1 9 ready_transfer $end
+$var wire 1 > half_buffer_internal $end
+$var wire 1 ? full_buffer_internal $end
+$var wire 8 @ addr_transfer_internal [7:0] $end
+$var reg 1 ) BUS_request $end
+$var reg 8 A DATA [7:0] $end
+$var reg 1 ( TI_in $end
+$var reg 8 B data_w [7:0] $end
+$var reg 1 % dir_transfer $end
+$var reg 1 C enable_addr_mng $end
+$var reg 1 $ enable_transfer $end
+$var reg 1 # error_reg $end
+$var reg 1 " full_buffer $end
+$var reg 1 ! half_buffer $end
+$var reg 1 D rst_fb $end
+$var reg 1 E rst_hb $end
+$var reg 3 F state [2:0] $end
+$scope module uut $end
+$var wire 1 C enable $end
+$var wire 1 . enable_DMA $end
+$var wire 8 G memory_buffer_offset [7:0] $end
+$var wire 8 H memory_start_address [7:0] $end
+$var wire 1 D rst_fb $end
+$var wire 1 E rst_hb $end
+$var wire 1 % rw $end
+$var parameter 8 I peripheral_addr $end
+$var reg 8 J addr [7:0] $end
+$var reg 8 K current_addr [7:0] $end
+$var reg 1 ? full_buffer $end
+$var reg 1 > half_buffer $end
+$var reg 8 L offset [7:0] $end
+$var reg 8 M origin_addr [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10000010 I
+$end
+#0
+$dumpvars
+bx M
+bx L
+bx K
+bx J
+bx H
+bx G
+bx F
+xE
+xD
+xC
+bx B
+bx A
+bx @
+x?
+x>
+bx =
+bx <
+bx ;
+bx :
+19
+bx 8
+bx 7
+bx 6
+bx 5
+bx 4
+bx 3
+02
+x1
+x0
+x/
+x.
+bx -
+bx ,
+0+
+0*
+x)
+x(
+bx '
+bx &
+x%
+x$
+x#
+x"
+x!
+$end
+#1
+12
+#2
+02
+#3
+0"
+0!
+b0 F
+b1000000 K
+b100 L
+b1000000 M
+12
+b10111110 6
+b101010 5
+b10001010 4
+b10101110 3
+b100 7
+b100 <
+b100 G
+b1000000 8
+b1000000 =
+b1000000 H
+0.
+#4
+0?
+0>
+1(
+1D
+1E
+0C
+0)
+0$
+0#
+02
+1.
+#5
+b1 F
+12
+#6
+02
+#7
+12
+#8
+02
+1+
+#9
+b10 F
+12
+#10
+02
+#11
+b1000001 K
+b1000000 '
+b1000000 :
+b1000000 @
+b1000000 J
+b11 F
+1)
+1C
+1%
+12
+#12
+02
+#13
+0C
+12
+#14
+02
+#15
+12
+#16
+02
+1*
+#17
+09
+1$
+12
+#18
+02
+#19
+12
+#20
+02
+#21
+12
+b10101110 -
+b10101110 ;
+#22
+02
+#23
+12
+#24
+02
+#25
+12
+#26
+02
+#27
+12
+#28
+02
+19
+#29
+b100 F
+b10101110 A
+0$
+12
+#30
+02
+#31
+b10000010 '
+b10000010 :
+b10000010 @
+b10000010 J
+b101 F
+1C
+0%
+12
+#32
+02
+#33
+09
+1$
+b10101110 &
+b10101110 B
+0C
+12
+#34
+02
+#35
+12
+#36
+02
+#37
+12
+b10101110 ,
+#38
+02
+#39
+12
+#40
+02
+#41
+12
+#42
+02
+#43
+12
+#44
+02
+19
+#45
+b110 F
+0$
+0(
+12
+#46
+02
+#47
+0*
+b1 F
+0)
+12
+#48
+02
+#49
+b10 F
+12
+#50
+02
+#51
+1>
+b1000010 K
+b1000001 '
+b1000001 :
+b1000001 @
+b1000001 J
+b11 F
+1)
+1C
+1%
+12
+#52
+02
+#53
+0C
+12
+#54
+02
+#55
+12
+#56
+02
+1*
+#57
+09
+1$
+12
+#58
+02
+#59
+12
+#60
+02
+#61
+12
+b10001010 -
+b10001010 ;
+#62
+02
+#63
+12
+#64
+02
+#65
+12
+#66
+02
+#67
+12
+#68
+02
+19
+#69
+b100 F
+b10001010 A
+0$
+12
+#70
+02
+#71
+b10000010 '
+b10000010 :
+b10000010 @
+b10000010 J
+b101 F
+1C
+0%
+12
+#72
+02
+#73
+09
+1$
+b10001010 &
+b10001010 B
+0C
+12
+#74
+02
+#75
+12
+#76
+02
+#77
+12
+b10001010 ,
+#78
+02
+#79
+12
+#80
+02
+#81
+12
+#82
+02
+#83
+12
+#84
+02
+19
+#85
+b110 F
+0$
+12
+#86
+02
+#87
+0*
+b1 F
+1!
+0)
+12
+#88
+02
+#89
+b10 F
+12
+#90
+02
+#91
+b1000011 K
+b1000010 '
+b1000010 :
+b1000010 @
+b1000010 J
+b11 F
+1)
+1C
+1%
+12
+#92
+02
+#93
+0C
+12
+#94
+02
+#95
+12
+#96
+02
+1*
+#97
+09
+1$
+12
+#98
+02
+#99
+12
+#100
+02
+#101
+12
+b101010 -
+b101010 ;
+#102
+02
+#103
+12
+#104
+02
+#105
+12
+#106
+02
+#107
+12
+#108
+02
+19
+#109
+b100 F
+b101010 A
+0$
+12
+#110
+02
+#111
+b10000010 '
+b10000010 :
+b10000010 @
+b10000010 J
+b101 F
+1C
+0%
+12
+#112
+02
+#113
+09
+1$
+b101010 &
+b101010 B
+0C
+12
+#114
+02
+#115
+12
+#116
+02
+#117
+12
+b101010 ,
+#118
+02
+#119
+12
+#120
+02
+#121
+12
+#122
+02
+#123
+12
+#124
+02
+19
+#125
+b110 F
+0$
+12
+#126
+02
+#127
+0*
+b1 F
+0)
+12
+#128
+02
+#129
+b10 F
+12
+#130
+02
+#131
+1?
+b1000100 K
+b1000011 '
+b1000011 :
+b1000011 @
+b1000011 J
+b11 F
+1)
+1C
+1%
+12
+#132
+02
+#133
+0C
+12
+#134
+02
+#135
+12
+#136
+02
+1*
+#137
+09
+1$
+12
+#138
+02
+#139
+12
+#140
+02
+#141
+12
+b10111110 -
+b10111110 ;
+#142
+02
+#143
+12
+#144
+02
+#145
+12
+#146
+02
+#147
+12
+#148
+02
+19
+#149
+b100 F
+b10111110 A
+0$
+12
+#150
+02
+#151
+b10000010 '
+b10000010 :
+b10000010 @
+b10000010 J
+b101 F
+1C
+0%
+12
+#152
+02
+#153
+09
+1$
+b10111110 &
+b10111110 B
+0C
+12
+#154
+02
+#155
+12
+#156
+02
+#157
+12
+b10111110 ,
+#158
+02
+#159
+12
+#160
+02
+#161
+12
+#162
+02
+#163
+12
+#164
+02
+19
+#165
+b110 F
+0$
+12
+#166
+02
+#167
+0*
+b111 F
+1"
+0)
+12
+#168
+02
+#169
+12
+#170
+02
+#171
+12
+#172
+02
+#173
+12
+#174
+02
+#175
+12
+#176
+02
+#177
+12
+#178
+02
+#179
+12
+#180
+02
+#181
+12
+#182
+02
+#183
+12
+#184
+02
+#185
+12
+#186
+02
+#187
+12
+#188
+02
+#189
+12
+#190
+02
+#191
+12
+#192
+02
+#193
+12
+#194
+02
+#195
+12
+#196
+02
+#197
+12
+#198
+02
+#199
+12
+#200
+02
+#201
+12
+#202
+02
+#203
+12
+#204
+02
+#205
+12
+#206
+02
+#207
+12
+#208
+0"
+0!
+b0 F
+02
+0.
+#209
+12
+#210
+b1000000 K
+0?
+0>
+1(
+02
+1.
+#211
+b1 F
+12
+#212
+02
+#213
+b10 F
+12
+#214
+02
+#215
+b1000001 K
+b1000000 '
+b1000000 :
+b1000000 @
+b1000000 J
+b11 F
+1)
+1C
+1%
+12
+#216
+02
+#217
+0C
+12
+#218
+02
+#219
+12
+#220
+02
+1*
+#221
+09
+1$
+12
+#222
+02
+#223
+12
+#224
+02
+#225
+12
+b10101110 -
+b10101110 ;
+#226
+02
+#227
+12
+#228
+02
+#229
+12
+#230
+02

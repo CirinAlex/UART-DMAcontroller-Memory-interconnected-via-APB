@@ -168,10 +168,10 @@ end
 
 
 
-always @(negedge enable_transfer)
+always @(negedge BUS_request)
 begin
 
-if(enable_transfer==0)
+if(BUS_request==0)
 begin
 	BUS_grant = 0;
 end
